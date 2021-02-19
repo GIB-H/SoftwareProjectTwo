@@ -1,4 +1,3 @@
 # SoftwareProjectTwo
 
-Written by George Hulbert, Ross Edwards, Kieren Adkins, Matthew Brock and Tom Wragg...
-hello world
+Written by George Hulbert, Ross Edwards, Kieren Adkins, Matthew Brock and Tom Wragg
