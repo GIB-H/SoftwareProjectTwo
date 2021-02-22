@@ -23,6 +23,7 @@ public class SQLiteDatabase {
             System.out.println("password added");
             pstmt.setInt(3, privLvl);
             System.out.println("privilege level added");
+            pstmt.executeUpdate();
         } catch (SQLException e) {
              System.out.println(e.getMessage());
         } finally {
@@ -39,20 +40,12 @@ public class SQLiteDatabase {
     public static Connection connect() {
         Connection conn = null;
         try {
-            String fileName = "login_info.db";
+            String fileName = "C:/Users/redwa/Documents/Uni Work/Software Projects/SoftwareProjectTwo/src/login_info.db";
             String url = "jdbc:sqlite:" + fileName;
             conn = DriverManager.getConnection(url);
             System.out.println("Database connection successful!");
         } catch(SQLException e) {
             System.out.println(e.getMessage());
-        } finally {
-            try {
-                if(conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
         }
         return conn;
     }
