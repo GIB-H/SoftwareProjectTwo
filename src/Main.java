@@ -4,14 +4,17 @@ public class Main {
         //System.out.println("Hello World!");
     }
 
-    public static void logIn(){
-        /* PULLS DATA FROM A DATABASE INTO VALUES BELOW
+    public static void login(){
+        /*
+        //PULLS DATA FROM A DATABASE INTO VALUES BELOW
+
         String accountUsername;
         String firstName;
         String lastName;
         String emailAddress;
         int accountBalance;
         int privilegeLevel;
+
         // TO BE PULLED IN FROM DATABASE
 
         // CHECKS PASSWORD IS VALID
