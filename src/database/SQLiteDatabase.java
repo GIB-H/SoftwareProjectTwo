@@ -13,7 +13,7 @@ public class SQLiteDatabase {
         Connection conn = null;
         try {
             // database parameters
-            String fileName = "C:/Users/redwa/Documents/Uni Work/Software Projects/SoftwareProjectTwo/src/login_info.db";
+            String fileName = "C:/Users/redwa/Documents/Uni Work/Software Projects/SoftwareProjectTwo/src/database/login_info.db";
             // connection string
             String url = "jdbc:sqlite:" + fileName;
             // create database connection
