@@ -31,6 +31,7 @@ public class SQLiteDatabase {
             String username = "rossedwards";
             String password = "ross";
             int privLvl = 0;
+            int ID = 0;
             String SQL = "INSERT INTO LoginInfo(Username,Password,PrivilegeLevel) VALUES(?,?,?)";
 
             PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -42,6 +43,8 @@ public class SQLiteDatabase {
             System.out.println("password added");
             pstmt.setInt(3, privLvl);
             System.out.println("privilege level added");
+            pstmt.setInt(4, ID);
+            System.out.println("id added");
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -56,7 +59,7 @@ public class SQLiteDatabase {
         }
     }
 
-    public void queryRecords(String username, String password, int privLvl) {
+    public void queryRecords(String username, String password, int privLvl, int ID) {
         Connection conn = connect();
         // declare an array list to store the search results
         ArrayList<ArrayList<Object>> data;
@@ -66,6 +69,7 @@ public class SQLiteDatabase {
             pstmt.setString(1,username);
             pstmt.setString(2,password);
             pstmt.setInt(3,privLvl);
+            pstmt.setInt(3,ID);
             data = new ArrayList<>();
             ResultSet result = pstmt.executeQuery();
             {
@@ -74,11 +78,13 @@ public class SQLiteDatabase {
                     result.getString("Username");
                     result.getString("Password");
                     result.getString("PrivilegeLevel");
+                    result.getString("ID");
 
                     ArrayList<Object> record = new ArrayList<>();
                     record.add(username);
                     record.add(password);
                     record.add(privLvl);
+                    record.add(ID);
                     data.add(record);
                 }
             }
