@@ -5,10 +5,6 @@ import java.util.ArrayList;
 
 public class SQLiteDatabase {
 
-    public static void main(String[] args) {
-
-    }
-
     public static Connection connect() {
         Connection conn = null;
         try {
@@ -25,26 +21,24 @@ public class SQLiteDatabase {
         return conn;
     }
 
-    public void insertRecords() {
+    public void insertRecords(String username, String password, int privLvl, String emailAddress, String firstName, String lastName, int balance) {
         Connection conn = connect();
         try {
-            String username = "rossedwards";
-            String password = "ross";
-            int privLvl = 0;
-            int ID = 0;
-            String SQL = "INSERT INTO LoginInfo(Username,Password,PrivilegeLevel) VALUES(?,?,?)";
+            String SQL = "INSERT INTO LoginInfo(Username,Password,PrivilegeLevel,EmailAddress,FirstName,LastName,Balance) VALUES(?,?,?,?,?,?,?)";
 
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             // we don't need to set the ID as it has been defined in the database to auto-increment and as not null
             // we use prepared statements instead of regular statements because the statement needs to accept parameters like the username
             pstmt.setString(1, username);
-            System.out.println("username added");
+            System.out.println("Your username is " + username + ".");
             pstmt.setString(2, password);
-            System.out.println("password added");
             pstmt.setInt(3, privLvl);
-            System.out.println("privilege level added");
-            pstmt.setInt(4, ID);
-            System.out.println("id added");
+            System.out.println("You are a free member. Subscribe and become a premium user for lots of great discounts and offers!");
+            pstmt.setString(4, emailAddress);
+            pstmt.setString(5, firstName);
+            pstmt.setString(6, lastName);
+            System.out.println("Your name is " + firstName + " " + lastName);
+            pstmt.setInt(7, balance);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
