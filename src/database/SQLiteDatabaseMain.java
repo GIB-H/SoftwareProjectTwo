@@ -4,8 +4,15 @@ import java.util.Scanner;
 public class SQLiteDatabaseMain {
 
     public static void main(String[] args) {
-        createUser();
-        deleteUser();
+        Scanner input = new Scanner(System.in);
+        System.out.println("""
+                What would you like to do?
+                1. Create Account
+                2. Delete Account""");
+        switch (input.nextInt()) {
+            case 1 -> createUser();
+            case 2 -> deleteUser();
+        }
     }
 
     public static void createUser() {
