@@ -21,10 +21,10 @@ public class SQLiteDatabase {
         return conn;
     }
 
-    public void insertRecords(String username, String password, int privLvl, String emailAddress, String firstName, String lastName, int balance) {
+    public void insertRecords(String username, String password, String emailAddress, String firstName, String lastName) {
         Connection conn = connect();
         try {
-            String SQL = "INSERT INTO LoginInfo(Username,Password,PrivilegeLevel,EmailAddress,FirstName,LastName,Balance) VALUES(?,?,?,?,?,?,?)";
+            String SQL = "INSERT INTO LoginInfo(Username,Password,EmailAddress,FirstName,LastName) VALUES(?,?,?,?,?)";
 
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             // we don't need to set the ID as it has been defined in the database to auto-increment and as not null
@@ -32,13 +32,11 @@ public class SQLiteDatabase {
             pstmt.setString(1, username);
             System.out.println("Your username is " + username + ".");
             pstmt.setString(2, password);
-            pstmt.setInt(3, privLvl);
             System.out.println("You are a free member. Subscribe and become a premium user for lots of great discounts and offers!");
-            pstmt.setString(4, emailAddress);
-            pstmt.setString(5, firstName);
-            pstmt.setString(6, lastName);
+            pstmt.setString(3, emailAddress);
+            pstmt.setString(4, firstName);
+            pstmt.setString(5, lastName);
             System.out.println("Your name is " + firstName + " " + lastName);
-            pstmt.setInt(7, balance);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
