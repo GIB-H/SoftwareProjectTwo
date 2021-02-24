@@ -103,13 +103,13 @@ public class SQLiteDatabase {
         }
     }
 
-    public void deleteRecord(int ID) {
-        String SQL = "DELETE FROM LoginInfo WHERE ID = ?";
+    public void deleteRecord(String username) {
+        String SQL = "DELETE FROM LoginInfo WHERE Username = ?";
         Connection conn = connect();
 
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
-            pstmt.setInt(1, ID);
+            pstmt.setString(1, username);
             pstmt.executeUpdate();
             System.out.println("User deleted.");
         } catch (SQLException e) {

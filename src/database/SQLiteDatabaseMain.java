@@ -4,6 +4,11 @@ import java.util.Scanner;
 public class SQLiteDatabaseMain {
 
     public static void main(String[] args) {
+        createUser();
+        deleteUser();
+    }
+
+    public static void createUser() {
         System.out.println("Welcome!");
         SQLiteDatabase app = new SQLiteDatabase();
         Scanner input = new Scanner(System.in);
@@ -18,5 +23,13 @@ public class SQLiteDatabaseMain {
         System.out.println("Last Name?");
         String lastName = input.next();
         app.insertRecords(username, password, emailAddress, firstName, lastName);
+    }
+
+    public static void deleteUser() {
+        System.out.println("Enter your username to delete your account.");
+        SQLiteDatabase app = new SQLiteDatabase();
+        Scanner input = new Scanner(System.in);
+        String username = input.next();
+        app.deleteRecord(username);
     }
 }
