@@ -8,12 +8,10 @@ public class SQLiteDatabaseMain {
         System.out.println("""
                 What would you like to do?
                 1. Create Account
-                2. Delete Account
-                3. Search Account""");
+                2. Delete Account""");
         switch (input.nextInt()) {
             case 1 -> createUser();
             case 2 -> deleteUser();
-            case 3 -> searchUser();
         }
     }
 
@@ -41,13 +39,4 @@ public class SQLiteDatabaseMain {
         String username = input.next();
         app.deleteRecord(username);
     }
-
-    public static void searchUser() {
-        System.out.println("Search a username: ");
-        SQLiteDatabase app = new SQLiteDatabase();
-        Scanner input = new Scanner(System.in);
-        String username = input.next();
-        app.queryRecords(username);
-    }
-
 }

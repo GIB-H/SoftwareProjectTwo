@@ -51,26 +51,32 @@ public class SQLiteDatabase {
         }
     }
 
-    public void queryRecords(String username) {
+    public void queryRecords(String username, String password, int privLvl, int ID) {
         Connection conn = connect();
         // declare an array list to store the search results
         ArrayList<ArrayList<Object>> data;
         try {
-            String SQL = "SELECT Username, EmailAddress, FirstName, LastName FROM LoginInfo WHERE Username = ?";
+            String SQL = "SELECT Username, Password, PrivilegeLevel FROM LoginInfo WHERE Username = ?";
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1,username);
+            pstmt.setString(2,password);
+            pstmt.setInt(3,privLvl);
+            pstmt.setInt(3,ID);
             data = new ArrayList<>();
             ResultSet result = pstmt.executeQuery();
             {
                 // loop through the search results
                 while(result.next()) {
                     result.getString("Username");
-                    result.getString("EmailAddress");
-                    result.getString("FirstName");
-                    result.getString("LastName");
+                    result.getString("Password");
+                    result.getString("PrivilegeLevel");
+                    result.getString("ID");
 
                     ArrayList<Object> record = new ArrayList<>();
                     record.add(username);
+                    record.add(password);
+                    record.add(privLvl);
+                    record.add(ID);
                     data.add(record);
                 }
             }
@@ -80,16 +86,15 @@ public class SQLiteDatabase {
         }
     }
 
-    public void updateRecord(String username, String password, String emailAddress, String firstName, String lastName) {
-        String SQL = "UPDATE LoginInfo SET Username = ?, Password = ?, EmailAddress = ?, FirstName = ?, LastName = ? WHERE ID = ?";
+    public void updateRecord(int ID, String username, String password, int privLvl) {
+        String SQL = "UPDATE LoginInfo SET Username = ?, Password = ?, PrivilegeLevel = ? WHERE ID = ?";
         try(Connection conn = connect();
         PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             // set parameters
             pstmt.setString(1, username);
             pstmt.setString(2, password);
-            pstmt.setString(3, emailAddress);
-            pstmt.setString(4, firstName);
-            pstmt.setString(5, lastName);
+            pstmt.setInt(3, privLvl);
+            pstmt.setInt(4, ID);
             // save changes
             pstmt.executeUpdate();
             System.out.println("Update successful!");
@@ -99,8 +104,9 @@ public class SQLiteDatabase {
     }
 
     public void deleteRecord(String username) {
-        Connection conn = connect();
         String SQL = "DELETE FROM LoginInfo WHERE Username = ?";
+        Connection conn = connect();
+
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, username);
