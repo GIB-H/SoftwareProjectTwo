@@ -37,25 +37,23 @@ public class Controller implements Initializable {
     @FXML
     void loginButtonOnAction(ActionEvent event){
         if (!UserNameField.getText().isBlank() && !PasswordField.getText().isBlank()){ //checks if username and password has been entered
-            validatelogin(); //validates the username and password entered to see if the values are correct
-
+            String username = UserNameField.getText();
+            String password = PasswordField.getText();
+            validateLogin(username, password); //validates the username and password entered to see if the values are correct
         }
-        else{LoginLabel.setText("Please enter username and password");} //if the username or password hasnt be entered
+        else{LoginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
     }
-    public void validatelogin(){
-        //SQLiteDatabase connectionNow = new ();
+    public void validateLogin(String username, String password){
+        // connect to database and verify connection
         SQLiteDatabase.connect();
-        System.out.println("Database connection successful!");
-        SQLiteDatabase.verifyLogin();
-      //  String verifyLogin = "SELECT count(1) FROM user WHERE username = "" AND WHERE password = """;
-
-
+        // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
+        SQLiteDatabase.verifyLogin(username, password);
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File ImageFile = new File("/Photo/LoginPhoto.png");//loads in the photos from the address
+        File ImageFile = new File("/images/LoginPhoto.png");//loads in the photos from the address
         Image LoginImage = new Image(ImageFile.toURI().toString());
         LoginImageView.setImage(LoginImage);//should set imagine up
     }

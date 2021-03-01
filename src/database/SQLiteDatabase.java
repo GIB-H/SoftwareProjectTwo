@@ -1,5 +1,6 @@
 package database;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -21,12 +22,20 @@ public class SQLiteDatabase {
         return conn;
     }
 
-    public static void verifyLogin() {
+    public static void verifyLogin(String username, String password) {
         Connection conn = connect();
-        String SQL = "SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?";
+        String SQL = "SELECT * FROM LoginInfo WHERE Username = ? AND Password = ? OR (Username IS NULL AND Password IS NULL)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
-            pstmt.executeQuery();
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            ResultSet result = pstmt.executeQuery();
+            {
+                while(result.next()) {
+                    result.getString(username);
+                    result.getString(password);
+                }
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -72,7 +81,6 @@ public class SQLiteDatabase {
             pstmt.setString(1,username);
             pstmt.setString(2,password);
             pstmt.setInt(3,privLvl);
-            pstmt.setInt(3,ID);
             data = new ArrayList<>();
             ResultSet result = pstmt.executeQuery();
             {
@@ -81,7 +89,6 @@ public class SQLiteDatabase {
                     result.getString("Username");
                     result.getString("Password");
                     result.getString("PrivilegeLevel");
-                    result.getString("ID");
 
                     ArrayList<Object> record = new ArrayList<>();
                     record.add(username);
