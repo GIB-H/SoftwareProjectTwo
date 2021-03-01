@@ -29,7 +29,7 @@
             </AnchorPane>
             <ImageView fx:id="LoginImageView" fitHeight="59.0" fitWidth="61.0" layoutX="623.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Photo/LoginPhoto.png" />
+                  <Image url="@../images/LoginPhoto.png" />
                </image>
             </ImageView>
          </children>
