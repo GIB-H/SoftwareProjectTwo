@@ -1,5 +1,6 @@
 package sample;
 
+import database.SQLiteDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,7 +36,7 @@ public class Controller implements Initializable {
 
     @FXML
     void loginButtonOnAction(ActionEvent event){
-        if (UserNameField.getText().isBlank() == false && PasswordField.getText().isBlank() == false){ //checks if username and password has been entered
+        if (!UserNameField.getText().isBlank() && !PasswordField.getText().isBlank()){ //checks if username and password has been entered
             validatelogin(); //validates the username and password entered to see if the values are correct
 
         }
@@ -43,7 +44,9 @@ public class Controller implements Initializable {
     }
     public void validatelogin(){
         //SQLiteDatabase connectionNow = new ();
-
+        SQLiteDatabase.connect();
+        System.out.println("Database connection successful!");
+        SQLiteDatabase.verifyLogin();
       //  String verifyLogin = "SELECT count(1) FROM user WHERE username = "" AND WHERE password = """;
 
 
