@@ -21,6 +21,17 @@ public class SQLiteDatabase {
         return conn;
     }
 
+    public static void verifyLogin() {
+        Connection conn = connect();
+        String SQL = "SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void insertRecords(String username, String password, String emailAddress, String firstName, String lastName) {
         Connection conn = connect();
         try {
