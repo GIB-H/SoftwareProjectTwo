@@ -9,7 +9,7 @@ public class SQLiteDatabase {
         Connection conn = null;
         try {
             // database parameters
-            String fileName = "login_info.db";
+            String fileName = "C:/Users/kiere/Documents/SoftwareProjectTwo1/src/database/login_info.db";
             // connection string
             String url = "jdbc:sqlite:" + fileName;
             // create database connection
@@ -26,8 +26,8 @@ public class SQLiteDatabase {
         String SQL = "SELECT * FROM LoginInfo WHERE Username = ? AND Password = ? OR (Username IS NULL AND Password IS NULL)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
+            pstmt.setString(2, username);
+            pstmt.setString(3, password);
             ResultSet result = pstmt.executeQuery();
             {
                 while(result.next()) {

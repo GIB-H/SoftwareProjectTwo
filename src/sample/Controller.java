@@ -50,18 +50,10 @@ public class Controller implements Initializable {
         // connect to database and verify connection
         SQLiteDatabase.connect();
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
-        Boolean validate = SQLiteDatabase.verifyLogin(username, password);
-        if (validate = true){
-            label.setText("THIS IS CORRECT");
-
-        }
-        else{
-            label.setText("NOT CORRECT");
-
-        }
-
+        SQLiteDatabase.verifyLogin(username, password);
 
     }
+
 
 
     @Override
