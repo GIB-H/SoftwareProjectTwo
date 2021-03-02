@@ -9,7 +9,7 @@ public class SQLiteDatabase {
         Connection conn = null;
         try {
             // database parameters
-            String fileName = "C:/Users/kiere/Documents/SoftwareProjectTwo1/src/database/login_info.db";
+            String fileName = "src/database/login_info.db";
             // connection string
             String url = "jdbc:sqlite:" + fileName;
             // create database connection
