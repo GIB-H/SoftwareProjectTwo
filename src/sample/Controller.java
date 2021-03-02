@@ -30,6 +30,9 @@ public class Controller implements Initializable {
     private Label lab;
 
     @FXML
+    private Label label;
+
+    @FXML
     private Label LoginLabel;
     @FXML
     private ImageView LoginImageView;
@@ -47,8 +50,17 @@ public class Controller implements Initializable {
         // connect to database and verify connection
         SQLiteDatabase.connect();
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
-        SQLiteDatabase.verifyLogin(username, password);
-        System.out.println("works");
+        Boolean validate = SQLiteDatabase.verifyLogin(username, password);
+        if (validate = true){
+            label.setText("THIS IS CORRECT");
+
+        }
+        else{
+            label.setText("NOT CORRECT");
+
+        }
+
+
     }
 
 
