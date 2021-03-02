@@ -1,6 +1,5 @@
 package database;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -10,7 +9,7 @@ public class SQLiteDatabase {
         Connection conn = null;
         try {
             // database parameters
-            String fileName = "C:/Users/redwa/Documents/Uni Work/Software Projects/SoftwareProjectTwo/src/database/login_info.db";
+            String fileName = "login_info.db";
             // connection string
             String url = "jdbc:sqlite:" + fileName;
             // create database connection
