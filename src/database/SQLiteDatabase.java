@@ -21,7 +21,7 @@ public class SQLiteDatabase {
         return conn;
     }
 
-    public static void verifyLogin(String username, String password) {
+    public static boolean verifyLogin(String username, String password) {
         Connection conn = connect();
         String SQL = "SELECT * FROM LoginInfo WHERE Username = ? AND Password = ? OR (Username IS NULL AND Password IS NULL)";
         try {
@@ -38,6 +38,7 @@ public class SQLiteDatabase {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return true;
     }
 
     public void insertRecords(String username, String password, String emailAddress, String firstName, String lastName) {

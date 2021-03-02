@@ -26,11 +26,6 @@ public class Controller implements Initializable {
     @FXML
     private Button Login;
 
-    @FXML
-    private Label lab;
-
-    @FXML
-    private Label label;
 
     @FXML
     private Label LoginLabel;
@@ -47,10 +42,15 @@ public class Controller implements Initializable {
         else{LoginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
     }
     public void validateLogin(String username, String password){
-        // connect to database and verify connection
-        SQLiteDatabase.connect();
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
-        SQLiteDatabase.verifyLogin(username, password);
+        boolean x = SQLiteDatabase.verifyLogin(username, password);
+        if (x = true){
+            LoginLabel.setText("this is correct");
+        }
+        else{
+            LoginLabel.setText("this is not correct");
+
+        }
 
     }
 
