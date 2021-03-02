@@ -3,63 +3,155 @@ package sample;
 import database.SQLiteDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
-import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class Controller {
+
+    int counter = 0;
+    @FXML
+    private Label points;
+    @FXML
+    private Label points2;
+    @FXML
+    private Button showOffers;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button accountButton;
+    @FXML
+    private Button rewardsButton;
+    @FXML
+    private AnchorPane rewardsPage;
+    @FXML
+    private AnchorPane homePage;
+    @FXML
+    private AnchorPane accountPage;
+
 
     @FXML
-    private PasswordField PasswordField;
+    private Button loginMain;
+    @FXML
+    private AnchorPane signInPage;
+    @FXML
+    private TextField userNameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Label loginLabel;
+    @FXML
+    private Button login;
+    @FXML
+    private Button signUp;
+
 
     @FXML
-    private TextField UserNameField;
+    private AnchorPane registerPage;
+    @FXML
+    private TextField createUsername;
+    @FXML
+    private Button createAccount;
+    @FXML
+    private PasswordField createPassword;
+    @FXML
+    private TextField email;
+    @FXML
+    private TextField firstName;
+    @FXML
+    private TextField secondName;
+    @FXML
+    private Button closeRegister;
+    @FXML
+    private Button closeSignIn;
 
     @FXML
-    private Button Login;
-
+    void showOffersAction(ActionEvent event) {
+        counter++;
+        points.setText(String.valueOf(counter));
+        points2.setText(String.valueOf(counter));
+    }
 
     @FXML
-    private Label LoginLabel;
+    void homeButtonAction(ActionEvent event) {
+        homePage.toFront();
+        homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+        rewardsButton.setStyle("-fx-background-color: #1C1316;");
+        accountButton.setStyle("-fx-background-color: #1C1316;");
+
+    }
+
     @FXML
-    private ImageView LoginImageView;
+    void rewardsButtonAction(ActionEvent event) {
+        counter++;
+        points.setText(String.valueOf(counter));
+        points2.setText(String.valueOf(counter));
+        rewardsPage.toFront();
+        rewardsButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+        homeButton.setStyle("-fx-background-color: #1C1316;");
+        accountButton.setStyle("-fx-background-color: #1C1316;");
+
+    }
+
+    @FXML
+    void accountButtonAction(ActionEvent event) {
+        accountPage.toFront();
+        accountButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+        homeButton.setStyle("-fx-background-color: #1C1316;");
+        rewardsButton.setStyle("-fx-background-color: #1C1316;");
+
+    }
+
+    @FXML
+    void loginButtonAction(ActionEvent event) {
+        loginMain.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+        System.out.println("test"); //takes us to login page
+        signInPage.toFront();
+
+    }
 
     @FXML
     void loginButtonOnAction(ActionEvent event){
-        if (!UserNameField.getText().isBlank() && !PasswordField.getText().isBlank()){ //checks if username and password has been entered
-            String username = UserNameField.getText();
-            String password = PasswordField.getText();
+        if (!userNameField.getText().isBlank() && !passwordField.getText().isBlank()){ //checks if username and password has been entered
+            String username = userNameField.getText();
+            String password = passwordField.getText();
             validateLogin(username, password); //validates the username and password entered to see if the values are correct
         }
-        else{LoginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
+        else{loginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
     }
     public void validateLogin(String username, String password){
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
         boolean x = SQLiteDatabase.verifyLogin(username, password);
         if (x = true){
-            LoginLabel.setText("this is correct");
+            loginLabel.setText("this is correct");
         }
         else{
-            LoginLabel.setText("this is not correct");
+            loginLabel.setText("this is not correct");
 
         }
 
     }
 
-
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        File ImageFile = new File("/images/LoginPhoto.png");//loads in the photos from the address
-        Image LoginImage = new Image(ImageFile.toURI().toString());
-        LoginImageView.setImage(LoginImage);//should set imagine up
+    @FXML
+    void signUpPage(ActionEvent event){
+        points.setText(String.valueOf(counter)); //takes us to signup page
+        signInPage.toBack();
+        registerPage.toFront();
     }
+
+    @FXML
+    void closeRegisterAction(ActionEvent event){
+        loginMain.setStyle("-fx-background-color: #1C1316;");
+        registerPage.toBack();
+    }
+
+    @FXML
+    void closeSignInAction(ActionEvent event){
+        loginMain.setStyle("-fx-background-color: #1C1316;");
+        signInPage.toBack();
+    }
+
+
+
 }
+
