@@ -48,6 +48,7 @@ public class Controller implements Initializable {
         SQLiteDatabase.connect();
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
         SQLiteDatabase.verifyLogin(username, password);
+        System.out.println("works");
     }
 
 
