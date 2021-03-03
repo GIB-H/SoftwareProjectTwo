@@ -21,24 +21,28 @@ public class SQLiteDatabase {
         return conn;
     }
 
-    public static boolean verifyLogin(String username, String password) {
+    public static void verifyLogin(String username, String password) {
         Connection conn = connect();
         String SQL = "SELECT * FROM LoginInfo WHERE Username = ? AND Password = ? OR (Username IS NULL AND Password IS NULL)";
+
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
-            pstmt.setString(2, username);
-            pstmt.setString(3, password);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
             ResultSet result = pstmt.executeQuery();
-            {
-                while(result.next()) {
-                    result.getString(username);
-                    result.getString(password);
-                }
+            if(result.next()){
+                System.out.println("Username & Password are correct");
+
+            } else {
+                System.out.println("Username & Password are incorrect");
+                System.out.println("Logged in");
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
         }
-        return true;
+        catch(Exception e){
+            System.out.println("Not Logged in");
+        }
+
+
     }
 
     public void insertRecords(String username, String password, String emailAddress, String firstName, String lastName) {

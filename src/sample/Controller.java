@@ -121,14 +121,7 @@ public class Controller {
     }
     public void validateLogin(String username, String password){
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
-        boolean x = SQLiteDatabase.verifyLogin(username, password);
-        if (x = true){
-            loginLabel.setText("this is correct");
-        }
-        else{
-            loginLabel.setText("this is not correct");
-
-        }
+        SQLiteDatabase.verifyLogin(username, password);
 
     }
 
