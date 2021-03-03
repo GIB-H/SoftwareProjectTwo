@@ -45,7 +45,7 @@ public class SQLiteDatabase {
 
     }
 
-    public void insertRecords(String username, String password, String emailAddress, String firstName, String lastName) {
+    public static void insertRecords(String username, String password, String emailAddress, String firstName, String lastName) {
         Connection conn = connect();
         try {
             String SQL = "INSERT INTO LoginInfo(Username,Password,EmailAddress,FirstName,LastName) VALUES(?,?,?,?,?)";

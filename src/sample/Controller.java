@@ -122,7 +122,17 @@ public class Controller {
     public void validateLogin(String username, String password){
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
         SQLiteDatabase.verifyLogin(username, password);
-
+    }
+    public void validateSignUp(String Firstname, String Secondname, String Email, String Password, String Username){
+        SQLiteDatabase.insertRecords(Username,Password,Email,Firstname,Secondname);
+    }
+    @FXML
+    void CreateAccountButton(ActionEvent event){
+        if (!firstName.getText().isBlank() && !email.getText().isBlank()&& !createPassword.getText().isBlank()&& !createUsername.getText().isBlank()&& !secondName.getText().isBlank()){ //checks if username and password has been entered
+            String Fn = firstName.getText(); String Sn = secondName.getText(); String Email = email.getText();String password = createPassword.getText(); String Username = createUsername.getText();
+            validateSignUp(Fn,Sn,Email,password,Username);
+        }
+        else{loginLabel.setText("Please Fill All The Fields");} //if the username or password hasn't been entered
     }
 
     @FXML
@@ -131,6 +141,7 @@ public class Controller {
         signInPage.toBack();
         registerPage.toFront();
     }
+
 
     @FXML
     void closeRegisterAction(ActionEvent event){
