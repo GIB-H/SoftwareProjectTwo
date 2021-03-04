@@ -81,10 +81,29 @@ public class Controller {
     private Label subTitle;
     @FXML
     private Label loginTextPrompt;
-
+    @FXML
+    private Button logout ;
     @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
 
+    }
+    @FXML
+    void setLogout(ActionEvent event){
+        loginLabel.setText("");
+        userNameField.clear(); //gets text from the textbox
+        passwordField.clear(); //gets text from the textbox
+        System.out.println("Goodbye");
+        signInPage.toFront();
+        usernameButton.setText("");
+        usernameHider.toBack();
+        usernameButton.toBack();
+        accountHider.toFront();
+        showOffers.toBack();
+        loginTextPrompt.setText("");
+        subTitle.setText("");
+        logout.setOpacity(0);
+        points.setText("");
+        points2.setText("");
     }
 
     @FXML
@@ -125,16 +144,15 @@ public class Controller {
     @FXML
     void loginButtonOnAction(ActionEvent event){
         if (!userNameField.getText().isBlank() && !passwordField.getText().isBlank()){ //checks if username and password has been entered
-            String username = userNameField.getText();
-            String password = passwordField.getText();
+            String username = userNameField.getText(); //gets text from the textbox
+            String password = passwordField.getText(); //gets text from the textbox
             validateLogin(username, password); //validates the username and password entered to see if the values are correct
         }
         else{loginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
     }
 
     public void validateLogin(String username, String password){
-        // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
-        boolean validate = SQLiteDatabase.verifyLogin(username, password);
+        boolean validate = SQLiteDatabase.verifyLogin(username, password); //calls function which checks if username and password are correct
         if (validate){
             loginLabel.setText("");
             System.out.println("Welcome "+ username);
@@ -147,7 +165,7 @@ public class Controller {
             showOffers.toFront();
             loginTextPrompt.setText("Welcome back " + username + ", check your rewards to see your specialised offers!");
             subTitle.setText("We are proud that you are one of 4+ pastel users.");
-
+            logout.setOpacity(100);
             int accountBalance = SQLiteDatabase.accountBalance(username);
             points.setText(String.valueOf(accountBalance));
             points2.setText(String.valueOf(accountBalance));
