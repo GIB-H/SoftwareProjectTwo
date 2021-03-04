@@ -75,6 +75,10 @@ public class Controller {
     private AnchorPane accountHider;
     @FXML
     private Button loginOffers;
+    @FXML
+    private Label subTitle;
+    @FXML
+    private Label loginTextPrompt;
 
     @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
@@ -145,6 +149,8 @@ public class Controller {
             accountHider.toBack();
             points.setTextFill(Color.rgb(255, 174, 203));
             showOffers.toFront();
+            loginTextPrompt.setText("Welcome back " + username + ", check your rewards to see your specialised offers!");
+            subTitle.setText("We are proud that you are one of 4+ pastel users.");
 
 
 
