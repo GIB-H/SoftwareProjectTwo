@@ -119,9 +119,11 @@ public class Controller {
         }
         else{loginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
     }
+
     public void validateLogin(String username, String password){
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
         SQLiteDatabase.verifyLogin(username, password);
+
     }
     public void validateSignUp(String Firstname, String Secondname, String Email, String Password, String Username){
         SQLiteDatabase.insertRecords(Username,Password,Email,Firstname,Secondname);

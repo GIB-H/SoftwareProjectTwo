@@ -32,7 +32,6 @@ public class SQLiteDatabase {
             ResultSet result = pstmt.executeQuery();
             if(result.next()){
                 System.out.println("Username & Password are correct");
-                System.out.println("Logged in");
 
             } else {
                 System.out.println("Username & Password are incorrect");
@@ -41,6 +40,7 @@ public class SQLiteDatabase {
         }
         catch(Exception e){
             System.out.println("Not Logged in");
+
         }
 
 
