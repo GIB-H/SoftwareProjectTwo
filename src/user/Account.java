@@ -1,6 +1,8 @@
+package user;
+
 public class Account {
     /*
-    The Account superclass is the parent for the AdminUser, PremiumUser and User
+    The user.Account superclass is the parent for the user.AdminUser, user.PremiumUser and user.User
     classes that all extend it and add varying functionality depending on the
     priority level of the user. By default, a user will get a conversion of their
     spent money into points for the system.
@@ -12,7 +14,7 @@ public class Account {
     interface that allows them to perform purchase simulations etc.
     */
 
-    // Creates Account Instance Variables
+    // Creates user.Account Instance Variables
     String accountUsername;
     String firstName;
     String lastName;
@@ -20,8 +22,8 @@ public class Account {
     int accountBalance;
     int privilegeLevel; // 0 = regular user | 1 = premium user | 2 = admin user
 
-    // Account Class Constructor
-    Account(String accountUsername, String firstName,String lastName, String emailAddress, int accountBalance, int privilegeLevel){
+    // user.Account Class Constructor
+    public Account(String accountUsername, String firstName, String lastName, String emailAddress, int accountBalance, int privilegeLevel){
         // Sets string attributes
         this.accountUsername = accountUsername;
         this.firstName = firstName;

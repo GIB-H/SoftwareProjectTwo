@@ -24,7 +24,28 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\database\LoginDetails.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\src\database\SQLiteDatabase.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\sample\Controller.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\user\Account.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />

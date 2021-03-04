@@ -3,7 +3,10 @@ package sample;
 import database.SQLiteDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
@@ -99,9 +102,10 @@ public class Controller {
 
     @FXML
     void rewardsButtonAction(ActionEvent event) {
-        counter++;
-        points.setText(String.valueOf(counter));
-        points2.setText(String.valueOf(counter));
+        String username = userNameField.getText();
+        int accountBalance = SQLiteDatabase.accountBalance(username);
+        points.setText(String.valueOf(accountBalance));
+        points2.setText(String.valueOf(accountBalance));
         rewardsPage.toFront();
         rewardsButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
         homeButton.setStyle("-fx-background-color: #1C1316;");
@@ -139,7 +143,7 @@ public class Controller {
     public void validateLogin(String username, String password){
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
         boolean validate = SQLiteDatabase.verifyLogin(username, password);
-        if (validate == true){
+        if (validate){
             loginLabel.setText("");
             System.out.println("Welcome "+ username);
             signInPage.toBack();
@@ -151,17 +155,14 @@ public class Controller {
             showOffers.toFront();
             loginTextPrompt.setText("Welcome back " + username + ", check your rewards to see your specialised offers!");
             subTitle.setText("We are proud that you are one of 4+ pastel users.");
-
-
-
         }
-        if(validate == false){
+        if(!validate){
             loginLabel.setText("You entered the wrong username or password!");
         }
-
     }
-    public void validateSignUp(String Firstname, String Secondname, String Email, String Password, String Username){
-        SQLiteDatabase.insertRecords(Username,Password,Email,Firstname,Secondname);
+
+    public void validateSignUp(String firstName, String secondName, String emailAddress, String password, String username){
+        SQLiteDatabase.insertRecords(username, password, emailAddress, firstName, secondName);
     }
     @FXML
     void CreateAccountButton(ActionEvent event){
@@ -169,7 +170,7 @@ public class Controller {
             String Fn = firstName.getText(); String Sn = secondName.getText(); String Email = email.getText();String password = createPassword.getText(); String Username = createUsername.getText();
             validateSignUp(Fn,Sn,Email,password,Username);
         }
-        else{loginLabel1.setText("Please Fill All The Fields");} //if the username or password hasn't been entered
+        else{loginLabel1.setText("Please fill all the fields");} //if the username or password hasn't been entered
     }
 
     @FXML

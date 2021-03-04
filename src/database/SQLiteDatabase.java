@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class SQLiteDatabase {
-
     public static Connection connect() {
         Connection conn = null;
         try {
@@ -14,7 +13,6 @@ public class SQLiteDatabase {
             String url = "jdbc:sqlite:" + fileName;
             // create database connection
             conn = DriverManager.getConnection(url);
-            System.out.println("Database connection successful!");
         } catch(SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -24,7 +22,6 @@ public class SQLiteDatabase {
     public static boolean verifyLogin(String username, String password) {
         Connection conn = connect();
         String SQL = "SELECT * FROM LoginInfo WHERE Username = ? AND Password = ? OR (Username IS NULL AND Password IS NULL)";
-
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, username);
@@ -77,7 +74,25 @@ public class SQLiteDatabase {
         }
     }
 
-    public void queryRecords(String username, String password, int privLvl, int ID) {
+    public static int accountBalance(String username) {
+        // establish database connection
+        Connection conn = connect();
+        // initialise balance variable
+        int accountBalance = 0;
+        try {
+            // search for balance in user record
+            String SQL = "SELECT Balance FROM LoginInfo WHERE Username = " + "'" + username + "'";
+            //
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            ResultSet result = pstmt.executeQuery();
+            accountBalance = result.getInt("Balance");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return accountBalance;
+    }
+
+    public void queryRecords(String username, String password) {
         Connection conn = connect();
         // declare an array list to store the search results
         ArrayList<ArrayList<Object>> data;
@@ -86,7 +101,6 @@ public class SQLiteDatabase {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1,username);
             pstmt.setString(2,password);
-            pstmt.setInt(3,privLvl);
             data = new ArrayList<>();
             ResultSet result = pstmt.executeQuery();
             {
@@ -99,8 +113,6 @@ public class SQLiteDatabase {
                     ArrayList<Object> record = new ArrayList<>();
                     record.add(username);
                     record.add(password);
-                    record.add(privLvl);
-                    record.add(ID);
                     data.add(record);
                 }
             }
@@ -135,7 +147,7 @@ public class SQLiteDatabase {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, username);
             pstmt.executeUpdate();
-            System.out.println("User deleted.");
+            System.out.println("user.User deleted.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

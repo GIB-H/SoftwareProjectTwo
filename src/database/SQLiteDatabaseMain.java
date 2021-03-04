@@ -17,7 +17,6 @@ public class SQLiteDatabaseMain {
 
     public static void createUser() {
         System.out.println("Welcome!");
-        SQLiteDatabase app = new SQLiteDatabase();
         Scanner input = new Scanner(System.in);
         System.out.println("Username? ");
         String username = input.next();
@@ -29,7 +28,7 @@ public class SQLiteDatabaseMain {
         String firstName = input.next();
         System.out.println("Last Name?");
         String lastName = input.next();
-        app.insertRecords(username, password, emailAddress, firstName, lastName);
+        SQLiteDatabase.insertRecords(username, password, emailAddress, firstName, lastName);
     }
 
     public static void deleteUser() {
