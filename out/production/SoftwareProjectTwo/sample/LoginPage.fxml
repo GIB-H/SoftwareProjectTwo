@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <AnchorPane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: #1C1316;">
          <children>
@@ -82,16 +82,45 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="registerPage" layoutX="388.0" layoutY="161.0" prefHeight="398.0" prefWidth="504.0" style="-fx-background-color: #1C1316; -fx-background-radius: 20;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="73.0" prefWidth="504.0" text="Register" textFill="#ffaecb">
+               <font>
+                  <Font name="Comic Sans MS" size="40.0" />
+               </font>
+            </Label>
+            <TextField fx:id="createUsername" alignment="CENTER" layoutX="262.0" layoutY="175.0" prefHeight="48.0" prefWidth="156.0" promptText="Username" />
+            <Button fx:id="createAccount" layoutX="86.0" layoutY="323.0" mnemonicParsing="false" onAction="#CreateAccountButton" prefHeight="48.0" prefWidth="332.0" style="-fx-background-color: #99C9F1; -fx-background-radius: 30;" text="Create Account" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="createPassword" alignment="CENTER" layoutX="86.0" layoutY="232.0" prefHeight="48.0" prefWidth="332.0" promptText="Password" />
+            <TextField fx:id="email" alignment="CENTER" layoutX="86.0" layoutY="175.0" prefHeight="48.0" prefWidth="156.0" promptText="Email" />
+            <TextField fx:id="firstName" alignment="CENTER" layoutX="86.0" layoutY="119.0" prefHeight="48.0" prefWidth="156.0" promptText="First Name" />
+            <Label fx:id="loginLabel1" alignment="CENTER" layoutX="93.0" layoutY="290.0" prefHeight="17.0" prefWidth="332.0" text=" " textFill="RED">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="closeRegister" layoutX="465.0" layoutY="5.0" mnemonicParsing="false" onAction="#closeRegisterAction" style="-fx-background-color: #1C1316;" text="X" textFill="RED">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Button>
+            <TextField fx:id="secondName" alignment="CENTER" layoutX="262.0" layoutY="119.0" prefHeight="48.0" prefWidth="156.0" promptText="Second Name" />
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="signInPage" layoutX="388.0" layoutY="161.0" prefHeight="398.0" prefWidth="504.0" style="-fx-background-color: #1C1316; -fx-background-radius: 20;">
          <children>
-            <Label layoutX="174.0" prefHeight="57.0" prefWidth="156.0" text="Sign In" textFill="#ffaecb">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="504.0" text="Sign In" textFill="#ffaecb">
                <font>
-                  <Font size="50.0" />
+                  <Font name="Comic Sans MS" size="40.0" />
                </font>
             </Label>
             <TextField fx:id="userNameField" alignment="CENTER" layoutX="86.0" layoutY="121.0" prefHeight="48.0" prefWidth="332.0" promptText="Username">
                <font>
-                  <Font name="Comic Sans MS" size="12.0" />
+                  <Font name="System" size="12.0" />
                </font>
             </TextField>
             <Button fx:id="login" alignment="CENTER" layoutX="86.0" layoutY="261.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="48.0" prefWidth="332.0" style="-fx-background-color: #99C9F1; -fx-background-radius: 30;" text="Login" textFill="WHITE">
@@ -101,7 +130,7 @@
             </Button>
             <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="86.0" layoutY="181.0" prefHeight="48.0" prefWidth="332.0" promptText="Password">
                <font>
-                  <Font name="Comic Sans MS" size="12.0" />
+                  <Font name="System" size="12.0" />
                </font>
             </PasswordField>
             <Label fx:id="loginLabel" alignment="CENTER" layoutX="86.0" layoutY="236.0" onDragDetected="#loginButtonOnAction" prefHeight="17.0" prefWidth="332.0" text=" " textFill="RED">
@@ -140,43 +169,6 @@
             </AnchorPane>
             <AnchorPane layoutX="985.0" layoutY="20.0" prefHeight="580.0" prefWidth="275.0" style="-fx-background-color: #8F576A; -fx-background-radius: 20;" />
             <AnchorPane layoutX="20.0" layoutY="525.0" prefHeight="75.0" prefWidth="945.0" style="-fx-background-color: #8F576A; -fx-background-radius: 20;" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="registerPage" layoutX="388.0" layoutY="161.0" prefHeight="398.0" prefWidth="504.0" style="-fx-background-color: #1C1316; -fx-background-radius: 20;">
-         <children>
-            <Button fx:id="closeRegister" layoutX="465.0" layoutY="5.0" mnemonicParsing="false" onAction="#closeRegisterAction" style="-fx-background-color: #1C1316;" text="X" textFill="RED">
-               <font>
-                  <Font name="Comic Sans MS" size="15.0" />
-               </font>
-            </Button>
-            <TextField fx:id="secondName" alignment="CENTER" layoutX="262.0" layoutY="119.0" prefHeight="48.0" prefWidth="156.0" promptText="Second Name">
-               <font>
-                  <Font name="Comic Sans MS" size="12.0" />
-               </font>
-            </TextField>
-            <Label alignment="CENTER" layoutX="96.0" prefHeight="73.0" prefWidth="312.0" text="Register" textFill="#ffaecb">
-               <font>
-                  <Font name="Comic Sans MS" size="50.0" />
-               </font>
-            </Label>
-            <TextField fx:id="createUsername" alignment="CENTER" layoutX="262.0" layoutY="175.0" prefHeight="48.0" prefWidth="156.0" promptText="Username" />
-            <Button fx:id="createAccount" layoutX="86.0" layoutY="323.0" mnemonicParsing="false" onAction="#CreateAccountButton" prefHeight="48.0" prefWidth="332.0" style="-fx-background-color: #99C9F1; -fx-background-radius: 30;" text="Create Account" textFill="WHITE">
-               <font>
-                  <Font name="Comic Sans MS" size="12.0" />
-               </font>
-            </Button>
-            <PasswordField fx:id="createPassword" alignment="CENTER" layoutX="86.0" layoutY="232.0" prefHeight="48.0" prefWidth="332.0" promptText="Password" />
-            <TextField fx:id="email" alignment="CENTER" layoutX="86.0" layoutY="175.0" prefHeight="48.0" prefWidth="156.0" promptText="Email" />
-            <TextField fx:id="firstName" alignment="CENTER" layoutX="86.0" layoutY="119.0" prefHeight="48.0" prefWidth="156.0" promptText="First Name">
-               <font>
-                  <Font name="Comic Sans MS" size="12.0" />
-               </font>
-            </TextField>
-            <Label fx:id="loginLabel1" alignment="CENTER" layoutX="93.0" layoutY="290.0" prefHeight="17.0" prefWidth="332.0" text=" " textFill="RED">
-               <font>
-                  <Font name="Comic Sans MS" size="12.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </children>
