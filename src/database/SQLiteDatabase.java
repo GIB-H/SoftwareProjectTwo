@@ -27,6 +27,7 @@ public class SQLiteDatabase {
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             ResultSet result = pstmt.executeQuery();
+
             if(result.next()){
                 System.out.println("Username & Password are correct");
                 return true;
