@@ -19,6 +19,8 @@ public class Controller {
     @FXML
     private Label points2;
     @FXML
+    private Label points3;
+    @FXML
     private Button showOffers;
     @FXML
     private Button homeButton;
@@ -87,6 +89,8 @@ public class Controller {
     @FXML
     private Label usernameLabel;
     @FXML
+    private Label usernameLabel2;
+    @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
 
     }
@@ -106,7 +110,6 @@ public class Controller {
         subTitle.setText("Join Over 4 Pastel Users.");
         logout.setOpacity(0);
         points.setText("N/A");
-        points2.setText("N/A");
         loginMain.setStyle("-fx-background-color: #1C1316;");
         homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
     }
@@ -174,7 +177,9 @@ public class Controller {
             int accountBalance = SQLiteDatabase.accountBalance(username);
             points.setText(String.valueOf(accountBalance));
             points2.setText(String.valueOf(accountBalance));
+            points3.setText(String.valueOf(accountBalance));
             usernameLabel.setText(username);
+            usernameLabel2.setText(username);
 
             homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
             rewardsButton.setStyle("-fx-background-color: #1C1316;");

@@ -126,6 +126,35 @@
             </Button>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="accountPage" layoutY="100.0" prefHeight="620.0" prefWidth="1280.0" style="-fx-background-color: #8F576A;">
+         <children>
+            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="580.0" prefWidth="165.0" style="-fx-background-color: #262626; -fx-background-radius: 20;">
+               <children>
+                  <Label fx:id="points3" alignment="CENTER" layoutY="319.0" prefHeight="44.0" prefWidth="165.0" text="N/A" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="275.0" prefHeight="44.0" prefWidth="165.0" text="My Balance:" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel2" alignment="CENTER" layoutX="2.0" layoutY="231.0" prefHeight="44.0" prefWidth="165.0" text="Username" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="logout" layoutX="10.0" layoutY="486.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="80.0" prefWidth="145.0" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="Logout" textFill="#ffaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="205.0" layoutY="20.0" prefHeight="580.0" prefWidth="517.5" style="-fx-background-color: #262626; -fx-background-radius: 20;" />
+            <AnchorPane layoutX="742.5" layoutY="20.0" prefHeight="580.0" prefWidth="517.5" style="-fx-background-color: #262626; -fx-background-radius: 20;" />
+         </children></AnchorPane>
       <AnchorPane fx:id="rewardsPage" layoutY="100.0" prefHeight="620.0" prefWidth="1280.0" style="-fx-background-color: #8F576A;">
          <children>
             <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="580.0" prefWidth="165.0" style="-fx-background-color: #262626; -fx-background-radius: 20;">
@@ -149,14 +178,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="accountPage" layoutY="100.0" prefHeight="620.0" prefWidth="1280.0" style="-fx-background-color: blue;">
-         <children>
-            <Button fx:id="logout" layoutX="472.0" layoutY="209.0" mnemonicParsing="false" onAction="#setLogout" opacity="0.0" prefHeight="80.0" prefWidth="167.0" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="Logout" textFill="#ffaecb">
-               <font>
-                  <Font name="Comic Sans MS" size="25.0" />
-               </font>
-            </Button>
-         </children></AnchorPane>
       <AnchorPane fx:id="homePage" layoutY="100.0" prefHeight="620.0" prefWidth="1280.0" style="-fx-background-color: #FEAECB;">
          <children>
             <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="405.0" prefWidth="945.0" style="-fx-background-color: #8F576A; -fx-background-radius: 20;">
