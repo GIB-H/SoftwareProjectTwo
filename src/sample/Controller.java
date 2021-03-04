@@ -66,12 +66,17 @@ public class Controller {
     private Button closeSignIn;
     @FXML
     private Label loginLabel1;
+    @FXML
+    private Button usernameButton;
+    @FXML
+    private AnchorPane usernameHider;
 
     @FXML
-    void showOffersAction(ActionEvent event) {
+    void showOffersAction(ActionEvent event) { //temp debug button
         counter++;
         points.setText(String.valueOf(counter));
         points2.setText(String.valueOf(counter));
+        System.out.println(loginMain.getWidth());
     }
 
     @FXML
@@ -128,6 +133,13 @@ public class Controller {
         if (validate == true){
             loginLabel.setText("");
             System.out.println("Welcome "+ username);
+            signInPage.toBack();
+            usernameButton.setText(String.valueOf(username));
+            usernameHider.toFront();
+            usernameButton.toFront();
+
+
+
         }
         if(validate == false){
             loginLabel.setText("You entered the wrong username or password!");
