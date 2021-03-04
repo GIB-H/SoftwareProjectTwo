@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 
 
 public class Controller {
@@ -70,6 +71,10 @@ public class Controller {
     private Button usernameButton;
     @FXML
     private AnchorPane usernameHider;
+    @FXML
+    private AnchorPane accountHider;
+    @FXML
+    private Button loginOffers;
 
     @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
@@ -137,6 +142,9 @@ public class Controller {
             usernameButton.setText(String.valueOf(username));
             usernameHider.toFront();
             usernameButton.toFront();
+            accountHider.toBack();
+            points.setTextFill(Color.rgb(255, 174, 203));
+            showOffers.toFront();
 
 
 
