@@ -32,10 +32,11 @@ public class SQLiteDatabase {
             ResultSet result = pstmt.executeQuery();
             if(result.next()){
                 System.out.println("Username & Password are correct");
+                System.out.println("Logged in");
 
             } else {
                 System.out.println("Username & Password are incorrect");
-                System.out.println("Logged in");
+
             }
         }
         catch(Exception e){
