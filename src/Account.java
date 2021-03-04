@@ -1,4 +1,17 @@
 public class Account {
+    /*
+    The Account superclass is the parent for the AdminUser, PremiumUser and User
+    classes that all extend it and add varying functionality depending on the
+    priority level of the user. By default, a user will get a conversion of their
+    spent money into points for the system.
+
+    However, a premium user will have a bonus modifier to their method of generating
+    points as well as access to extra features.
+
+    An Admin will have access to special commands and an additional administration
+    interface that allows them to perform purchase simulations etc.
+    */
+
     // Creates Account Instance Variables
     String accountUsername;
     String firstName;
@@ -7,13 +20,14 @@ public class Account {
     int accountBalance;
     int privilegeLevel; // 0 = regular user | 1 = premium user | 2 = admin user
 
-    // Account Constructor
+    // Account Class Constructor
     Account(String accountUsername, String firstName,String lastName, String emailAddress, int accountBalance, int privilegeLevel){
         // Sets string attributes
         this.accountUsername = accountUsername;
         this.firstName = firstName;
         this.lastName  = lastName;
         this.emailAddress = emailAddress;
+
         // Sets integer attributes
         this.accountBalance = accountBalance;
         this.privilegeLevel = privilegeLevel;
@@ -23,24 +37,24 @@ public class Account {
         /*
         A method to increment or decrement the account balance tied with the users account
         This method is called whenever an individual gains points or spends them to update
-        their balance.
+        their balance. Used within the simPurchase method.
         */
 
-        return accountBalance + amount;
+        int newBalance = accountBalance + amount;
+
+        // CODE TO UPDATE THE DATABASE WITH THE newBalance
+
+        return newBalance;
     }
 
-    public void redeemCode(){
+    public void simPurchase(int purchaseValue){
         /*
-        SKELETON CODE:
-
-        - Pulls a code from a text box in the GUI
-
-        - Figures out the amount of points to award based on the code
+        A method that will take in a value and simulate the process of a purchase being made
+        this purchase may be made via a card payment etc, this is just an abstraction of that
+        so that a users account and point balance can be made dynamic.
         */
 
-        String code = "EXAMPLE"; // To be updated with the entry in text box instead of null
-        int codeValue = 0;       // To be updated with the value of the code instead of 0
-
-        accountBalance = updateBalance(codeValue);
+        int userBalance = 0;                     // PULLS USER BALANCE FROM DB (NEEDS CODING)
+        updateBalance(purchaseValue /100); // Increases the user's balance by 1/100th of the irl purchase
     }
 }
