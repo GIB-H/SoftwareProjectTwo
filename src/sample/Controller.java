@@ -13,7 +13,6 @@ import javafx.scene.paint.Color;
 
 public class Controller {
 
-    int counter = 0;
     @FXML
     private Label points;
     @FXML
@@ -85,10 +84,7 @@ public class Controller {
 
     @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
-        counter++;
-        points.setText(String.valueOf(counter));
-        points2.setText(String.valueOf(counter));
-        System.out.println(loginMain.getWidth());
+
     }
 
     @FXML
@@ -102,10 +98,6 @@ public class Controller {
 
     @FXML
     void rewardsButtonAction(ActionEvent event) {
-        String username = userNameField.getText();
-        int accountBalance = SQLiteDatabase.accountBalance(username);
-        points.setText(String.valueOf(accountBalance));
-        points2.setText(String.valueOf(accountBalance));
         rewardsPage.toFront();
         rewardsButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
         homeButton.setStyle("-fx-background-color: #1C1316;");
@@ -155,6 +147,10 @@ public class Controller {
             showOffers.toFront();
             loginTextPrompt.setText("Welcome back " + username + ", check your rewards to see your specialised offers!");
             subTitle.setText("We are proud that you are one of 4+ pastel users.");
+
+            int accountBalance = SQLiteDatabase.accountBalance(username);
+            points.setText(String.valueOf(accountBalance));
+            points2.setText(String.valueOf(accountBalance));
         }
         if(!validate){
             loginLabel.setText("You entered the wrong username or password!");
@@ -175,7 +171,6 @@ public class Controller {
 
     @FXML
     void signUpPage(ActionEvent event){
-        points.setText(String.valueOf(counter)); //takes us to signup page
         signInPage.toBack();
         registerPage.toFront();
     }

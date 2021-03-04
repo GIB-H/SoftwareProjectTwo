@@ -16,7 +16,7 @@
                   <Font name="Comic Sans MS" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="accountButton" layoutX="268.0" layoutY="10.0" mnemonicParsing="false" onAction="#accountButtonAction" prefHeight="80.0" prefWidth="129.0" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="user.Account" textFill="#ffaecb">
+            <Button fx:id="accountButton" layoutX="268.0" layoutY="10.0" mnemonicParsing="false" onAction="#accountButtonAction" prefHeight="80.0" prefWidth="129.0" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="Account" textFill="#ffaecb">
                <font>
                   <Font name="Comic Sans MS" size="25.0" />
                </font>
@@ -39,7 +39,7 @@
             </Button>
             <AnchorPane fx:id="accountHider" layoutX="268.0" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: #1C1316;">
                <children>
-                  <Button layoutY="10.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="129.0" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="user.Account" textFill="#61434e">
+                  <Button layoutY="10.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="129.0" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="Account" textFill="#61434e">
                      <font>
                         <Font name="Comic Sans MS" size="25.0" />
                      </font>
@@ -51,7 +51,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <Label fx:id="points" layoutX="1174.0" layoutY="19.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="65.0" prefWidth="74.0" text="N/A" textFill="#61444e">
+            <Label fx:id="points" layoutX="1075.0" layoutY="17.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="65.0" prefWidth="179.0" text="N/A" textFill="#61444e">
                <font>
                   <Font name="Comic Sans MS" size="30.0" />
                </font>
