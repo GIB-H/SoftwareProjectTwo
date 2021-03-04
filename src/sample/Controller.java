@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
@@ -84,6 +85,8 @@ public class Controller {
     @FXML
     private Button logout ;
     @FXML
+    private Label usernameLabel;
+    @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
 
     }
@@ -93,17 +96,19 @@ public class Controller {
         System.out.println("Goodbye " + userNameField.getText() + " Have a great day");
         userNameField.clear(); //gets text from the textbox
         passwordField.clear(); //gets text from the textbox
-        signInPage.toFront();
+        homePage.toFront();
         usernameButton.setText("");
         usernameHider.toBack();
         usernameButton.toBack();
         accountHider.toFront();
         showOffers.toBack();
-        loginTextPrompt.setText("");
-        subTitle.setText("");
+        loginTextPrompt.setText("Login now to view rewards and access your account information.");
+        subTitle.setText("Join Over 4 Pastel Users.");
         logout.setOpacity(0);
-        points.setText("");
-        points2.setText("");
+        points.setText("N/A");
+        points2.setText("N/A");
+        loginMain.setStyle("-fx-background-color: #1C1316;");
+        homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
     }
 
     @FXML
@@ -169,6 +174,11 @@ public class Controller {
             int accountBalance = SQLiteDatabase.accountBalance(username);
             points.setText(String.valueOf(accountBalance));
             points2.setText(String.valueOf(accountBalance));
+            usernameLabel.setText(username);
+
+            homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+            rewardsButton.setStyle("-fx-background-color: #1C1316;");
+            accountButton.setStyle("-fx-background-color: #1C1316;");
         }
         if(!validate){
             loginLabel.setText("You entered the wrong username or password!");
@@ -205,7 +215,6 @@ public class Controller {
         loginMain.setStyle("-fx-background-color: #1C1316;");
         signInPage.toBack();
     }
-
 
 
 }
