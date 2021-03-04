@@ -90,9 +90,9 @@ public class Controller {
     @FXML
     void setLogout(ActionEvent event){
         loginLabel.setText("");
+        System.out.println("Goodbye " + userNameField.getText() + " Have a great day");
         userNameField.clear(); //gets text from the textbox
         passwordField.clear(); //gets text from the textbox
-        System.out.println("Goodbye");
         signInPage.toFront();
         usernameButton.setText("");
         usernameHider.toBack();
