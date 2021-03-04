@@ -21,7 +21,7 @@ public class SQLiteDatabase {
         return conn;
     }
 
-    public static void verifyLogin(String username, String password) {
+    public static boolean verifyLogin(String username, String password) {
         Connection conn = connect();
         String SQL = "SELECT * FROM LoginInfo WHERE Username = ? AND Password = ? OR (Username IS NULL AND Password IS NULL)";
 
@@ -32,15 +32,16 @@ public class SQLiteDatabase {
             ResultSet result = pstmt.executeQuery();
             if(result.next()){
                 System.out.println("Username & Password are correct");
+                return true;
 
             } else {
                 System.out.println("Username & Password are incorrect");
-
+                return false;
             }
         }
         catch(Exception e){
             System.out.println("Not Logged in");
-
+            return false;
         }
 
 

@@ -64,6 +64,8 @@ public class Controller {
     private Button closeRegister;
     @FXML
     private Button closeSignIn;
+    @FXML
+    private Label loginLabel1;
 
     @FXML
     void showOffersAction(ActionEvent event) {
@@ -122,7 +124,14 @@ public class Controller {
 
     public void validateLogin(String username, String password){
         // SELECT count(1) FROM LoginInfo WHERE Username = ? AND Password = ?
-        SQLiteDatabase.verifyLogin(username, password);
+        boolean validate = SQLiteDatabase.verifyLogin(username, password);
+        if (validate == true){
+            loginLabel.setText("");
+            System.out.println("Welcome "+ username);
+        }
+        if(validate == false){
+            loginLabel.setText("You entered the wrong username or password!");
+        }
 
     }
     public void validateSignUp(String Firstname, String Secondname, String Email, String Password, String Username){
@@ -134,7 +143,7 @@ public class Controller {
             String Fn = firstName.getText(); String Sn = secondName.getText(); String Email = email.getText();String password = createPassword.getText(); String Username = createUsername.getText();
             validateSignUp(Fn,Sn,Email,password,Username);
         }
-        else{loginLabel.setText("Please Fill All The Fields");} //if the username or password hasn't been entered
+        else{loginLabel1.setText("Please Fill All The Fields");} //if the username or password hasn't been entered
     }
 
     @FXML
