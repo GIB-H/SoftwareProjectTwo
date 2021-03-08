@@ -163,7 +163,7 @@ public class Controller {
     @FXML
     void DeleteAccountOnAction(ActionEvent event){
         String username = userNameField.getText();
-        String password = passwordField.getText();//orginal password
+        //String password = passwordField.getText();//orginal password
         //String ReEnteredPassword; // add a second password field
         //add a are u sure screen which requires the username to enter their password again and compare to password
         //if (password == ReEnteredPassword){

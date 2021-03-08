@@ -168,15 +168,13 @@ public class SQLiteDatabase {
 
     public static void deleteRecord(String username) {
         String SQL = "DELETE FROM LoginInfo WHERE Username = ?";
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+        Connection conn = connect();
 
-            // set the corresponding param
-            pstmt.setInt(1, Integer.parseInt(username));
-            // execute the delete statement
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, username);
             pstmt.executeUpdate();
-            System.out.println("Deleted");
-
+            System.out.println("user.User deleted.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
