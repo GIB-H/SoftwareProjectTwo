@@ -307,9 +307,9 @@
                   </Label>
                </children>
             </AnchorPane>
-            <ScrollPane layoutX="675.0" layoutY="188.0" prefHeight="200.0" prefWidth="200.0">
+            <ScrollPane layoutX="229.0" layoutY="18.0" prefHeight="559.0" prefWidth="1001.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="584.0" prefWidth="1013.0" style="-fx-background-color: #8F576A;" />
               </content>
             </ScrollPane>
          </children>
