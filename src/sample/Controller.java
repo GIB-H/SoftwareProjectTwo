@@ -219,6 +219,15 @@ public class Controller {
     public void validateLogin(String accountUsername, String accountPassword){
         boolean validate = SQLiteDatabase.verifyLogin(accountUsername, accountPassword); //calls function which checks if username and password are correct
         if (validate){
+
+            String accountFirstname = SQLiteDatabase.accountFirstName(accountUsername);
+            String accountSecondName = SQLiteDatabase.accountSecondName(accountUsername);
+            String accountEmailAddress = SQLiteDatabase.accountEmailAddress(accountUsername);
+            int accountBalance = SQLiteDatabase.accountBalance(accountUsername);
+            int accountPrivilegeLevel = SQLiteDatabase.privilegeLevel(accountUsername);
+
+            Account user = new Account(accountUsername, accountFirstname, accountSecondName, accountEmailAddress, accountBalance, accountPrivilegeLevel);
+
             loginLabel.setText("");
             System.out.println("Welcome "+ accountUsername);
             signInPage.toBack();
@@ -231,7 +240,6 @@ public class Controller {
             loginTextPrompt.setText("Welcome back " + accountUsername + ", check your rewards to see your specialised offers!");
             subTitle.setText("We are proud that you are one of 4+ pastel users.");
             logout.setOpacity(100);
-            int accountBalance = SQLiteDatabase.accountBalance(accountUsername);
             points.setText(String.valueOf(accountBalance));
             points2.setText(String.valueOf(accountBalance));
             points3.setText(String.valueOf(accountBalance));
@@ -242,12 +250,7 @@ public class Controller {
             rewardsButton.setStyle("-fx-background-color: #1C1316;");
             accountButton.setStyle("-fx-background-color: #1C1316;");
 
-            String accountFirstname = SQLiteDatabase.accountFirstName(accountUsername);
-            String accountSecondName = SQLiteDatabase.accountSecondName(accountUsername);
-            String accountEmailAddress = SQLiteDatabase.accountEmailAddress(accountUsername);
-            int accountPrivilegeLevel = SQLiteDatabase.privilegeLevel(accountUsername);
 
-            Account user = new Account(accountUsername, accountFirstname, accountSecondName, accountEmailAddress, accountBalance, accountPrivilegeLevel);
 
         }
         if(!validate){
