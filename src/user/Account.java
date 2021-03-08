@@ -1,6 +1,7 @@
 package user;
 
 import database.SQLiteDatabase;
+import sample.Controller;
 
 public class Account {
     /*
@@ -61,7 +62,6 @@ public class Account {
 
         int userBalance = 0;                     // PULLS USER BALANCE FROM DB (NEEDS CODING)
         accountBalance = updateBalance(purchaseValue /100); // Increases the user's balance by 1/100th of the irl purchase
-        //needs to call a method that updates the users balance in the database
     }
 
     public String getAccountUsername() {

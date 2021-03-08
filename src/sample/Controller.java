@@ -311,6 +311,11 @@ public class Controller {
         Account user = new Account(null, null, null, null, 1, 0);
         user = loginInfo(user);
         user.simPurchase(purchaseValue);
+
+        String username = userNameField.getText();
+        String balance = String.valueOf(user.getAccountBalance());
+        SQLiteDatabase.updateBalance(username, balance);
+
         points.setText(String.valueOf(user.getAccountBalance()));
         points2.setText(String.valueOf(user.getAccountBalance()));
         points3.setText(String.valueOf(user.getAccountBalance()));
