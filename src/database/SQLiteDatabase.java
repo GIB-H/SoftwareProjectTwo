@@ -228,7 +228,7 @@ public class SQLiteDatabase {
         }
     }
     public static void UpdatePassword(String Username, String password){
-        String SQL = "UPDATE LoginInfo SET Password WHERE Username = ?";
+        String SQL = "UPDATE LoginInfo SET Password = ? WHERE Username = ?";
         try(Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             // set parameters
