@@ -227,13 +227,15 @@ public class SQLiteDatabase {
             System.out.println(e.getMessage());
         }
     }
-    public static void UpdatePassword(String Username, String password){
-        String SQL = "UPDATE LoginInfo SET Password = ? WHERE Username = ?";
+    public static void UpdatePassword(String username, String newpassword){
+        String SQL = "UPDATE LoginInfo SET Password = ? WHERE Username = '" + username + "'";
+
         try(Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             // set parameters
-            pstmt.setString(1, Username);
-            pstmt.setString(2, password);
+            pstmt.setString(1, newpassword);
+            System.out.println(username);
+            System.out.println(newpassword);
             // save changes
             pstmt.executeUpdate();
             conn.close();
