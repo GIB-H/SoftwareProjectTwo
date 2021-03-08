@@ -307,6 +307,14 @@ public class Controller {
         int randomNum = ThreadLocalRandom.current().nextInt(1, 100 + 1);
         System.out.println(randomNum);
         randomPurchaseButton.setText("Spent £"+randomNum);
+        int purchaseValue = randomNum*100;
+        Account user = new Account(null, null, null, null, 1, 0);
+        user = loginInfo(user);
+        user.simPurchase(purchaseValue);
+        points.setText(String.valueOf(user.getAccountBalance()));
+        points2.setText(String.valueOf(user.getAccountBalance()));
+        points3.setText(String.valueOf(user.getAccountBalance()));
+
     }
 
     public void logoutEvents(){
