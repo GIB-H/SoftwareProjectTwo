@@ -1,5 +1,7 @@
 package user;
 
+import database.SQLiteDatabase;
+
 public class Account {
     /*
     The user.Account superclass is the parent for the user.AdminUser, user.PremiumUser and user.User
@@ -42,9 +44,10 @@ public class Account {
         their balance. Used within the simPurchase method.
         */
 
+        SQLiteDatabase.accountBalance(accountUsername);
         int newBalance = accountBalance + amount;
 
-        // CODE TO UPDATE THE DATABASE WITH THE newBalance
+        // CODE TO UPDATE THE DATABASE WITH THE
 
         return newBalance;
     }

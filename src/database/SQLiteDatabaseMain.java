@@ -35,7 +35,7 @@ public class SQLiteDatabaseMain {
         System.out.println("Enter your username to delete your account.");
         SQLiteDatabase app = new SQLiteDatabase();
         Scanner input = new Scanner(System.in);
-        String username = input.next();
-        app.deleteRecord(username);
+        String password = input.next();
+        app.deleteRecord(password);
     }
 }
