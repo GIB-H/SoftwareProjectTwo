@@ -227,6 +227,21 @@ public class SQLiteDatabase {
             System.out.println(e.getMessage());
         }
     }
+    public static void UpdatePassword(String Username, String password){
+        String SQL = "UPDATE LoginInfo SET Password WHERE Username = ?";
+        try(Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+            // set parameters
+            pstmt.setString(1, Username);
+            pstmt.setString(2, password);
+            // save changes
+            pstmt.executeUpdate();
+            conn.close();
+            System.out.println("Update successful!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public void updateRecord(String accountUsername, String accountPassword, int privLvl) {
         String SQL = "UPDATE LoginInfo SET Username = ?, Password = ?, PrivilegeLevel = ?";

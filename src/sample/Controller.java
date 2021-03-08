@@ -19,6 +19,10 @@ public class Controller {
     @FXML
     private Label points2;
     @FXML
+    private Button updatePassword;
+    @FXML
+    private PasswordField ChangePasswordField;
+    @FXML
     private Label points3;
     @FXML
     private Button showOffers;
@@ -104,6 +108,13 @@ public class Controller {
     private Button closeDelete;
     @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
+
+    }
+    @FXML
+    void changepassword(ActionEvent event){
+        String username = userNameField.getText();
+        String newpassword = ChangePasswordField.getText();
+        SQLiteDatabase.UpdatePassword(username, newpassword);
 
     }
     @FXML
