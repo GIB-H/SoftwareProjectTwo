@@ -280,6 +280,11 @@
                         <Font name="Comic Sans MS" size="27.0" />
                      </font>
                   </Label>
+                  <Button fx:id="randomPurchaseButton" layoutX="666.0" layoutY="317.0" mnemonicParsing="false" onAction="#randomPurchase" opacity="0.0" prefHeight="57.0" prefWidth="260.0" style="-fx-background-color: #99C9F1; -fx-background-radius: 30;" text="Random Purchase" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS" size="16.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="985.0" layoutY="20.0" prefHeight="580.0" prefWidth="275.0" style="-fx-background-color: #8F576A; -fx-background-radius: 20;">

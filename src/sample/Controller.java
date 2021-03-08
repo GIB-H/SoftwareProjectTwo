@@ -11,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import user.Account;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 
 public class Controller {
 
@@ -107,6 +109,10 @@ public class Controller {
     @FXML
     private Button closeDelete;
     @FXML
+    private Button randomPurchaseButton;
+
+
+    @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
 
     }
@@ -119,22 +125,7 @@ public class Controller {
     }
     @FXML
     void setLogout(ActionEvent event){
-        loginLabel.setText("");
-        System.out.println("Goodbye, " + userNameField.getText() + ", have a nice day!");
-        userNameField.clear(); //gets text from the textbox
-        passwordField.clear(); //gets text from the textbox
-        homePage.toFront();
-        usernameButton.setText("");
-        usernameHider.toBack();
-        usernameButton.toBack();
-        accountHider.toFront();
-        showOffers.toBack();
-        loginTextPrompt.setText("Login now to view rewards and access your account information.");
-        subTitle.setText("Join Over 4 Pastel Users.");
-        logout.setOpacity(0);
-        points.setText("N/A");
-        loginMain.setStyle("-fx-background-color: #1C1316;");
-        homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+        logoutEvents();
     }
 
     @FXML
@@ -196,21 +187,7 @@ public class Controller {
         //add a are u sure screen which requires the username to enter their password again and compare to password
         if (accountPassword.equals(reEnteredPassword) && accountUsername.equals(reEnteredUsername)){
             SQLiteDatabase.deleteRecord(accountUsername);
-            userNameField.clear();
-            passwordField.clear();
-            homePage.toFront();
-            usernameButton.setText("");
-            usernameHider.toBack();
-            usernameButton.toBack();
-            accountHider.toFront();
-            showOffers.toBack();
-            loginTextPrompt.setText("Login now to view rewards and access your account information.");
-            subTitle.setText("Join Over 4 Pastel Users!");
-            logout.setOpacity(0);
-            points.setText("N/A");
-            loginMain.setStyle("-fx-background-color: #1C1316;");
-            homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
-            loginPopup.toBack();
+            logoutEvents();
         }
         else{
             loginLabel2.setText("Username or Password Incorrect");
@@ -254,6 +231,7 @@ public class Controller {
             loginTextPrompt.setText("Welcome back " + accountFirstName + ", check your rewards to see your specialised offers!");
             subTitle.setText("We are proud that you are one of 4+ pastel users.");
             logout.setOpacity(100);
+            randomPurchaseButton.setOpacity(100);
             System.out.println(accountBalance);
             points.setText(String.valueOf(accountBalance));
             points2.setText(String.valueOf(accountBalance));
@@ -322,6 +300,33 @@ public class Controller {
     void closePopup(ActionEvent event){
         loginMain.setStyle("-fx-background-color: #1C1316;");
         loginPopup.toBack();
+    }
+
+    @FXML
+    void randomPurchase(ActionEvent event){
+        int randomNum = ThreadLocalRandom.current().nextInt(1, 100 + 1);
+        System.out.println(randomNum);
+        randomPurchaseButton.setText("Spent £"+randomNum);
+    }
+
+    public void logoutEvents(){
+        loginLabel.setText("");
+        userNameField.clear(); //gets text from the textbox
+        passwordField.clear(); //gets text from the textbox
+        homePage.toFront();
+        usernameButton.setText("");
+        usernameHider.toBack();
+        usernameButton.toBack();
+        accountHider.toFront();
+        showOffers.toBack();
+        loginTextPrompt.setText("Login now to view rewards and access your account information.");
+        subTitle.setText("Join Over 4 Pastel Users.");
+        logout.setOpacity(0);
+        randomPurchaseButton.setOpacity(0);
+        points.setText("N/A");
+        loginMain.setStyle("-fx-background-color: #1C1316;");
+        homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+        randomPurchaseButton.setText("Random Purchase");
     }
 
 
