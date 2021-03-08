@@ -19,17 +19,17 @@ public class Account {
     // Creates user.Account Instance Variables
     String accountUsername;
     String firstName;
-    String lastName;
+    String secondName;
     String emailAddress;
     int accountBalance;
     int privilegeLevel; // 0 = regular user | 1 = premium user | 2 = admin user
 
     // user.Account Class Constructor
-    public Account(String accountUsername, String firstName, String lastName, String emailAddress, int accountBalance, int privilegeLevel){
+    public Account(String accountUsername, String firstName, String secondName, String emailAddress, int accountBalance, int privilegeLevel){
         // Sets string attributes
         this.accountUsername = accountUsername;
         this.firstName = firstName;
-        this.lastName  = lastName;
+        this.secondName = secondName;
         this.emailAddress = emailAddress;
 
         // Sets integer attributes

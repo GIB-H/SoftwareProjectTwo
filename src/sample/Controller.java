@@ -7,10 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import user.Account;
 
 
 public class Controller {
@@ -114,7 +112,7 @@ public class Controller {
     @FXML
     void setLogout(ActionEvent event){
         loginLabel.setText("");
-        System.out.println("Goodbye " + userNameField.getText() + " Have a great day");
+        System.out.println("Goodbye, " + userNameField.getText() + ", have a nice day!");
         userNameField.clear(); //gets text from the textbox
         passwordField.clear(); //gets text from the textbox
         homePage.toFront();
@@ -173,7 +171,7 @@ public class Controller {
             String accountPassword = passwordField.getText(); //gets text from the textbox
             validateLogin(accountUsername, accountPassword); //validates the username and password entered to see if the values are correct
         }
-        else{loginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
+        else{loginLabel.setText("Please enter your username and password");} //if the username or password hasn't been entered
     }
 
 
@@ -185,10 +183,10 @@ public class Controller {
     void DeleteAccountOnAction(ActionEvent event){
         String accountUsername = userNameField.getText();
         String accountPassword = passwordField.getText();//orginal password
-        String ReEnteredPassword = deletePassword.getText(); // add a second password field
-        String ReEnteredUsername = deleteUsername.getText();
+        String reEnteredPassword = deletePassword.getText(); // add a second password field
+        String reEnteredUsername = deleteUsername.getText();
         //add a are u sure screen which requires the username to enter their password again and compare to password
-        if (accountPassword.equals(ReEnteredPassword) && accountUsername.equals(ReEnteredUsername)){
+        if (accountPassword.equals(reEnteredPassword) && accountUsername.equals(reEnteredUsername)){
             SQLiteDatabase.deleteRecord(accountUsername);
             userNameField.clear();
             passwordField.clear();
@@ -199,7 +197,7 @@ public class Controller {
             accountHider.toFront();
             showOffers.toBack();
             loginTextPrompt.setText("Login now to view rewards and access your account information.");
-            subTitle.setText("Join Over 4 Pastel Users.");
+            subTitle.setText("Join Over 4 Pastel Users!");
             logout.setOpacity(0);
             points.setText("N/A");
             loginMain.setStyle("-fx-background-color: #1C1316;");
@@ -209,7 +207,7 @@ public class Controller {
         else{
             loginLabel2.setText("Username or Password Incorrect");
             System.out.println(accountPassword);
-            System.out.println(ReEnteredPassword);
+            System.out.println(reEnteredPassword);
 
         }
 
@@ -250,8 +248,8 @@ public class Controller {
     }
 
     public void validateSignUp(String firstName, String secondName, String emailAddress, String accountPassword, String accountUsername){
-        boolean checkusername = SQLiteDatabase.CheckUserName(accountUsername);
-        if (checkusername == true) {
+        boolean checkUsername = SQLiteDatabase.CheckUserName(accountUsername);
+        if (checkUsername) {
             if (accountPassword.length() < 8) {
                 loginLabel1.setText("password is too short");
             }
