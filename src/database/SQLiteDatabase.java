@@ -55,11 +55,13 @@ public class SQLiteDatabase {
 
             if(result.next()){
                 System.out.println("Username is already used");
+                conn.close();
                 return false;
 
 
             } else {
                 System.out.println("Username isnt used");
+                conn.close();
                 return true;
             }
         }
@@ -251,6 +253,7 @@ public class SQLiteDatabase {
             pstmt.setString(1, accountUsername);
             pstmt.executeUpdate();
             System.out.println("User deleted");
+            conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
