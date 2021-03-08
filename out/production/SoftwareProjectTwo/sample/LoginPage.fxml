@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -228,7 +230,29 @@
                         <Font name="Comic Sans MS" size="16.0" />
                      </font>
                   </Button>
-                  <AnchorPane layoutX="20.0" layoutY="117.0" prefHeight="171.0" prefWidth="905.0" style="-fx-background-color: #CF7C9B; -fx-background-radius: 20;" />
+                  <AnchorPane layoutX="20.0" layoutY="117.0" prefHeight="171.0" prefWidth="905.0" style="-fx-background-color: #CF7C9B; -fx-background-radius: 20;">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="196.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@download%20(1).png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="196.0" layoutX="193.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Amazon.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="196.0" layoutX="371.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Netflix.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="150.0" fitWidth="309.0" layoutX="548.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@disney.jpg" />
+                           </image>
+                        </ImageView>
+                     </children></AnchorPane>
                   <Button fx:id="loginOffers" layoutX="20.0" layoutY="317.0" mnemonicParsing="false" onAction="#signUpPage" prefHeight="57.0" prefWidth="260.0" style="-fx-background-color: #7093AF; -fx-background-radius: 30;" text="Join Pastel" textFill="#b6b5b5">
                      <font>
                         <Font name="Comic Sans MS" size="16.0" />
@@ -246,7 +270,34 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="985.0" layoutY="20.0" prefHeight="580.0" prefWidth="275.0" style="-fx-background-color: #8F576A; -fx-background-radius: 20;" />
+            <AnchorPane layoutX="985.0" layoutY="20.0" prefHeight="580.0" prefWidth="275.0" style="-fx-background-color: #8F576A; -fx-background-radius: 20;">
+               <children>
+                  <ImageView fitHeight="131.0" fitWidth="122.0" layoutX="77.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Apple%20Pay.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="130.0" fitWidth="116.0" layoutX="80.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@PayPal.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="108.0" fitWidth="122.0" layoutX="77.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Master%20Card.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="131.0" fitWidth="122.0" layoutX="77.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Visa.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="15.0" layoutY="14.0" prefHeight="56.0" prefWidth="245.0" text="WE ACCEPT ALL MAJOR PAYMENT METHORDS" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS" size="10.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
             <AnchorPane layoutX="20.0" layoutY="500.0" prefHeight="100.0" prefWidth="945.0" style="-fx-background-color: #8F576A; -fx-background-radius: 20;">
                <children>
                   <Label fx:id="loginTextPrompt" layoutX="147.0" prefHeight="100.0" text="Login now to view rewards and access your account information." textFill="WHITE">
