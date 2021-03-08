@@ -234,22 +234,22 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="196.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@download%20(1).png" />
+                              <Image url="@../images/download%20(1).png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="196.0" layoutX="193.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Amazon.jpg" />
+                              <Image url="@../images/Amazon.jpg" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="196.0" layoutX="371.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@Netflix.png" />
+                              <Image url="@../images/Netflix.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="309.0" layoutX="548.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@disney.jpg" />
+                              <Image url="@../images/disney.jpg" />
                            </image>
                         </ImageView>
                      </children></AnchorPane>
@@ -274,22 +274,22 @@
                <children>
                   <ImageView fitHeight="131.0" fitWidth="122.0" layoutX="77.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Apple%20Pay.jpg" />
+                        <Image url="@../images/Apple%20Pay.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="130.0" fitWidth="116.0" layoutX="80.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@PayPal.jpg" />
+                        <Image url="@../images/PayPal.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="108.0" fitWidth="122.0" layoutX="77.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Master%20Card.png" />
+                        <Image url="@../images/Master%20Card.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="131.0" fitWidth="122.0" layoutX="77.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Visa.png" />
+                        <Image url="@../images/Visa.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="15.0" layoutY="14.0" prefHeight="56.0" prefWidth="245.0" text="WE ACCEPT ALL MAJOR PAYMENT METHORDS" textFill="WHITE">
