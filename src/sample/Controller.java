@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import user.Account;
 
 
 public class Controller {
@@ -93,6 +94,20 @@ public class Controller {
     @FXML
     private Button DeleteAccount;
     @FXML
+    private AnchorPane loginPopup;
+    @FXML
+    private TextField deleteUsername;
+    @FXML
+    private TextField deletePassword;
+    @FXML
+    private Button confirmDelete;
+    @FXML
+    private Label loginLabel2;
+    @FXML
+    private Button closeDelete;
+
+
+    @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
 
     }
@@ -160,33 +175,44 @@ public class Controller {
         }
         else{loginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
     }
+
+
+    @FXML
+    void openDeleteAccount(ActionEvent event){
+        loginPopup.toFront();
+    }
     @FXML
     void DeleteAccountOnAction(ActionEvent event){
         String username = userNameField.getText();
-        //String password = passwordField.getText();//orginal password
-        //String ReEnteredPassword; // add a second password field
+        String password = passwordField.getText();//orginal password
+        String ReEnteredPassword = deletePassword.getText(); // add a second password field
+        String ReEnteredUsername = deleteUsername.getText();
         //add a are u sure screen which requires the username to enter their password again and compare to password
-        //if (password == ReEnteredPassword){
-            //delete
-       // }
-        //else{
-            //label.setText("password incorrect")
-       // }
-        SQLiteDatabase.deleteRecord(username);
-        userNameField.clear();
-        passwordField.clear();
-        homePage.toFront();
-        usernameButton.setText("");
-        usernameHider.toBack();
-        usernameButton.toBack();
-        accountHider.toFront();
-        showOffers.toBack();
-        loginTextPrompt.setText("Login now to view rewards and access your account information.");
-        subTitle.setText("Join Over 4 Pastel Users.");
-        logout.setOpacity(0);
-        points.setText("N/A");
-        loginMain.setStyle("-fx-background-color: #1C1316;");
-        homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+        if (password.equals(ReEnteredPassword) && username.equals(ReEnteredUsername)){
+            SQLiteDatabase.deleteRecord(username);
+            userNameField.clear();
+            passwordField.clear();
+            homePage.toFront();
+            usernameButton.setText("");
+            usernameHider.toBack();
+            usernameButton.toBack();
+            accountHider.toFront();
+            showOffers.toBack();
+            loginTextPrompt.setText("Login now to view rewards and access your account information.");
+            subTitle.setText("Join Over 4 Pastel Users.");
+            logout.setOpacity(0);
+            points.setText("N/A");
+            loginMain.setStyle("-fx-background-color: #1C1316;");
+            homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+            loginPopup.toBack();
+        }
+        else{
+            loginLabel2.setText("Username or Password Incorrect");
+            System.out.println(password);
+            System.out.println(ReEnteredPassword);
+
+        }
+
 
 
     }
@@ -216,6 +242,7 @@ public class Controller {
             homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
             rewardsButton.setStyle("-fx-background-color: #1C1316;");
             accountButton.setStyle("-fx-background-color: #1C1316;");
+
         }
         if(!validate){
             loginLabel.setText("You entered the wrong username or password!");
@@ -265,6 +292,12 @@ public class Controller {
     void closeSignInAction(ActionEvent event){
         loginMain.setStyle("-fx-background-color: #1C1316;");
         signInPage.toBack();
+    }
+
+    @FXML
+    void closePopup(ActionEvent event){
+        loginMain.setStyle("-fx-background-color: #1C1316;");
+        loginPopup.toBack();
     }
 
 
