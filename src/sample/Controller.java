@@ -35,7 +35,6 @@ public class Controller {
     @FXML
     private AnchorPane accountPage;
 
-
     @FXML
     private Button loginMain;
     @FXML
@@ -50,7 +49,6 @@ public class Controller {
     private Button login;
     @FXML
     private Button signUp;
-
 
     @FXML
     private AnchorPane registerPage;
@@ -104,8 +102,6 @@ public class Controller {
     private Label loginLabel2;
     @FXML
     private Button closeDelete;
-
-
     @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
 
@@ -183,7 +179,7 @@ public class Controller {
     @FXML
     void DeleteAccountOnAction(ActionEvent event){
         String accountUsername = userNameField.getText();
-        String accountPassword = passwordField.getText();//orginal password
+        String accountPassword = passwordField.getText(); // original password
         String reEnteredPassword = deletePassword.getText(); // add a second password field
         String reEnteredUsername = deleteUsername.getText();
         //add a are u sure screen which requires the username to enter their password again and compare to password
@@ -216,18 +212,25 @@ public class Controller {
 
     }
 
+    public Account loginInfo(Account user) {
+        String accountUsername = userNameField.getText();
+        String accountFirstName = SQLiteDatabase.accountFirstName(accountUsername);
+        String accountSecondName = SQLiteDatabase.accountSecondName(accountUsername);
+        String accountEmailAddress = SQLiteDatabase.accountEmailAddress(accountUsername);
+        int accountBalance = SQLiteDatabase.accountBalance(accountUsername);
+        int accountPrivilegeLevel = SQLiteDatabase.privilegeLevel(accountUsername);
+
+        user = new Account(accountUsername, accountFirstName, accountSecondName, accountEmailAddress, accountBalance, accountPrivilegeLevel);
+        return user;
+    }
+
     public void validateLogin(String accountUsername, String accountPassword){
         boolean validate = SQLiteDatabase.verifyLogin(accountUsername, accountPassword); //calls function which checks if username and password are correct
         if (validate){
-
-            String accountFirstname = SQLiteDatabase.accountFirstName(accountUsername);
-            String accountSecondName = SQLiteDatabase.accountSecondName(accountUsername);
-            String accountEmailAddress = SQLiteDatabase.accountEmailAddress(accountUsername);
-            int accountBalance = SQLiteDatabase.accountBalance(accountUsername);
-            int accountPrivilegeLevel = SQLiteDatabase.privilegeLevel(accountUsername);
-
-            Account user = new Account(accountUsername, accountFirstname, accountSecondName, accountEmailAddress, accountBalance, accountPrivilegeLevel);
-
+            Account user = new Account(null, null, null, null, 1, 0);
+            user = loginInfo(user);
+            int accountBalance = user.getAccountBalance();
+            String accountFirstName = user.getFirstName();
             loginLabel.setText("");
             System.out.println("Welcome "+ accountUsername);
             signInPage.toBack();
@@ -237,9 +240,10 @@ public class Controller {
             accountHider.toBack();
             points.setTextFill(Color.rgb(255, 174, 203));
             showOffers.toFront();
-            loginTextPrompt.setText("Welcome back " + accountUsername + ", check your rewards to see your specialised offers!");
+            loginTextPrompt.setText("Welcome back " + accountFirstName + ", check your rewards to see your specialised offers!");
             subTitle.setText("We are proud that you are one of 4+ pastel users.");
             logout.setOpacity(100);
+            System.out.println(accountBalance);
             points.setText(String.valueOf(accountBalance));
             points2.setText(String.valueOf(accountBalance));
             points3.setText(String.valueOf(accountBalance));

@@ -52,6 +52,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\user\AdminUser.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\user\PremiumUser.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\src\user\User.java">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\testing\SQLiteDatabaseTesting.java">
           <value>
             <Attribute>
