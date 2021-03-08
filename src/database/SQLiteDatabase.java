@@ -87,6 +87,7 @@ public class SQLiteDatabase {
             pstmt.setString(5, lastName);
             System.out.println("Your name is " + firstName + " " + lastName);
             pstmt.executeUpdate();
+            conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
