@@ -19,17 +19,17 @@ public class Account {
     // Creates user.Account Instance Variables
     String accountUsername;
     String firstName;
-    String lastName;
+    String secondName;
     String emailAddress;
     int accountBalance;
     int privilegeLevel; // 0 = regular user | 1 = premium user | 2 = admin user
 
     // user.Account Class Constructor
-    public Account(String accountUsername, String firstName, String lastName, String emailAddress, int accountBalance, int privilegeLevel){
+    public Account(String accountUsername, String firstName, String secondName, String emailAddress, int accountBalance, int privilegeLevel){
         // Sets string attributes
         this.accountUsername = accountUsername;
         this.firstName = firstName;
-        this.lastName  = lastName;
+        this.secondName = secondName;
         this.emailAddress = emailAddress;
 
         // Sets integer attributes
@@ -62,4 +62,54 @@ public class Account {
         int userBalance = 0;                     // PULLS USER BALANCE FROM DB (NEEDS CODING)
         updateBalance(purchaseValue /100); // Increases the user's balance by 1/100th of the irl purchase
     }
+
+    public String getAccountUsername() {
+        return accountUsername;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public int getAccountBalance() {
+        return accountBalance;
+    }
+
+    public int getPrivilegeLevel() {
+        return privilegeLevel;
+    }
+
+    public void setAccountUsername(String accountUsername) {
+        this.accountUsername = accountUsername;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public void setAccountBalance(int accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
+    public void setPrivilegeLevel(int privilegeLevel) {
+        this.privilegeLevel = privilegeLevel;
+    }
+
+
 }
