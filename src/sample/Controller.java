@@ -9,6 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+import user.Account;
 
 
 public class Controller {
@@ -240,6 +241,13 @@ public class Controller {
             homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
             rewardsButton.setStyle("-fx-background-color: #1C1316;");
             accountButton.setStyle("-fx-background-color: #1C1316;");
+
+            String accountFirstname = SQLiteDatabase.accountFirstName(accountUsername);
+            String accountSecondName = SQLiteDatabase.accountSecondName(accountUsername);
+            String accountEmailAddress = SQLiteDatabase.accountEmailAddress(accountUsername);
+            int accountPrivilegeLevel = SQLiteDatabase.privilegeLevel(accountUsername);
+
+            Account user = new Account(accountUsername, accountFirstname, accountSecondName, accountEmailAddress, accountBalance, accountPrivilegeLevel);
 
         }
         if(!validate){
