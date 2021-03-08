@@ -91,6 +91,8 @@ public class Controller {
     @FXML
     private Label usernameLabel2;
     @FXML
+    private Button DeleteAccount;
+    @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
 
     }
@@ -158,6 +160,36 @@ public class Controller {
         }
         else{loginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
     }
+    @FXML
+    void DeleteAccountOnAction(ActionEvent event){
+        String username = userNameField.getText();
+        String password = passwordField.getText();//orginal password
+        //String ReEnteredPassword; // add a second password field
+        //add a are u sure screen which requires the username to enter their password again and compare to password
+        //if (password == ReEnteredPassword){
+            //delete
+       // }
+        //else{
+            //label.setText("password incorrect")
+       // }
+        SQLiteDatabase.deleteRecord(username);
+        userNameField.clear();
+        passwordField.clear();
+        homePage.toFront();
+        usernameButton.setText("");
+        usernameHider.toBack();
+        usernameButton.toBack();
+        accountHider.toFront();
+        showOffers.toBack();
+        loginTextPrompt.setText("Login now to view rewards and access your account information.");
+        subTitle.setText("Join Over 4 Pastel Users.");
+        logout.setOpacity(0);
+        points.setText("N/A");
+        loginMain.setStyle("-fx-background-color: #1C1316;");
+        homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+
+
+    }
 
     public void validateLogin(String username, String password){
         boolean validate = SQLiteDatabase.verifyLogin(username, password); //calls function which checks if username and password are correct
@@ -191,7 +223,21 @@ public class Controller {
     }
 
     public void validateSignUp(String firstName, String secondName, String emailAddress, String password, String username){
-        SQLiteDatabase.insertRecords(username, password, emailAddress, firstName, secondName);
+        boolean checkusername = SQLiteDatabase.CheckUserName(username);
+        if (checkusername == true) {
+            if (password.length() < 8) {
+                loginLabel1.setText("password is too short");
+            }
+            else{
+                SQLiteDatabase.insertRecords(username, password, emailAddress, firstName, secondName);
+                loginLabel1.setText("Successfully created, welcome " + username);
+            }
+        }
+        else{
+            loginLabel1.setText("Username already in use");
+
+        }
+
     }
     @FXML
     void CreateAccountButton(ActionEvent event){

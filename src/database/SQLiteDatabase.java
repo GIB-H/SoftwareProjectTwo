@@ -30,6 +30,7 @@ public class SQLiteDatabase {
 
             if(result.next()){
                 System.out.println("Username & Password are correct");
+                conn.close();
                 return true;
 
             } else {
@@ -42,6 +43,30 @@ public class SQLiteDatabase {
             return false;
         }
 
+
+    }
+    public static boolean CheckUserName(String username){
+        Connection conn = connect();
+        String SQL = "SELECT * FROM LoginInfo WHERE Username = ?OR (Username IS NULL)";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, username);
+            ResultSet result = pstmt.executeQuery();
+
+            if(result.next()){
+                System.out.println("Username is already used");
+                return false;
+
+
+            } else {
+                System.out.println("Username isnt used");
+                return true;
+            }
+        }
+        catch(Exception e){
+            System.out.println("username isnt used");
+            return true;
+        }
 
     }
 
@@ -87,6 +112,7 @@ public class SQLiteDatabase {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             ResultSet result = pstmt.executeQuery();
             accountBalance = result.getInt("Balance");
+            conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -140,15 +166,17 @@ public class SQLiteDatabase {
         }
     }
 
-    public void deleteRecord(String username) {
+    public static void deleteRecord(String username) {
         String SQL = "DELETE FROM LoginInfo WHERE Username = ?";
-        Connection conn = connect();
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
 
-        try {
-            PreparedStatement pstmt = conn.prepareStatement(SQL);
-            pstmt.setString(1, username);
+            // set the corresponding param
+            pstmt.setInt(1, Integer.parseInt(username));
+            // execute the delete statement
             pstmt.executeUpdate();
-            System.out.println("user.User deleted.");
+            System.out.println("Deleted");
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
