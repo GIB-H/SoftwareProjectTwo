@@ -7,10 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import user.Account;
 
 
 public class Controller {
@@ -94,20 +92,6 @@ public class Controller {
     @FXML
     private Button DeleteAccount;
     @FXML
-    private AnchorPane loginPopup;
-    @FXML
-    private TextField deleteUsername;
-    @FXML
-    private TextField deletePassword;
-    @FXML
-    private Button confirmDelete;
-    @FXML
-    private Label loginLabel2;
-    @FXML
-    private Button closeDelete;
-
-
-    @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
 
     }
@@ -169,95 +153,83 @@ public class Controller {
     @FXML
     void loginButtonOnAction(ActionEvent event){
         if (!userNameField.getText().isBlank() && !passwordField.getText().isBlank()){ //checks if username and password has been entered
-            String username = userNameField.getText(); //gets text from the textbox
-            String password = passwordField.getText(); //gets text from the textbox
-            validateLogin(username, password); //validates the username and password entered to see if the values are correct
+            String accountUsername = userNameField.getText(); //gets text from the textbox
+            String accountPassword = passwordField.getText(); //gets text from the textbox
+            validateLogin(accountUsername, accountPassword); //validates the username and password entered to see if the values are correct
         }
         else{loginLabel.setText("Please enter username and password");} //if the username or password hasn't been entered
     }
-
-
-    @FXML
-    void openDeleteAccount(ActionEvent event){
-        loginPopup.toFront();
-    }
     @FXML
     void DeleteAccountOnAction(ActionEvent event){
-        String username = userNameField.getText();
-        String password = passwordField.getText();//orginal password
-        String ReEnteredPassword = deletePassword.getText(); // add a second password field
-        String ReEnteredUsername = deleteUsername.getText();
+        String accountPassword = userNameField.getText();
+        //String password = passwordField.getText();//original password
+        //String ReEnteredPassword; // add a second password field
         //add a are u sure screen which requires the username to enter their password again and compare to password
-        if (password.equals(ReEnteredPassword) && username.equals(ReEnteredUsername)){
-            SQLiteDatabase.deleteRecord(username);
-            userNameField.clear();
-            passwordField.clear();
-            homePage.toFront();
-            usernameButton.setText("");
-            usernameHider.toBack();
-            usernameButton.toBack();
-            accountHider.toFront();
-            showOffers.toBack();
-            loginTextPrompt.setText("Login now to view rewards and access your account information.");
-            subTitle.setText("Join Over 4 Pastel Users.");
-            logout.setOpacity(0);
-            points.setText("N/A");
-            loginMain.setStyle("-fx-background-color: #1C1316;");
-            homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
-            loginPopup.toBack();
-        }
-        else{
-            loginLabel2.setText("Username or Password Incorrect");
-            System.out.println(password);
-            System.out.println(ReEnteredPassword);
-
-        }
-
+        //if (password == ReEnteredPassword){
+            //delete
+       // }
+        //else{
+            //label.setText("password incorrect")
+       // }
+        SQLiteDatabase.deleteRecord(accountPassword);
+        userNameField.clear();
+        passwordField.clear();
+        homePage.toFront();
+        usernameButton.setText("");
+        usernameHider.toBack();
+        usernameButton.toBack();
+        accountHider.toFront();
+        showOffers.toBack();
+        loginTextPrompt.setText("Login now to view rewards and access your account information.");
+        subTitle.setText("Join Over 4 Pastel Users.");
+        logout.setOpacity(0);
+        points.setText("N/A");
+        loginMain.setStyle("-fx-background-color: #1C1316;");
+        homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
 
 
     }
 
-    public void validateLogin(String username, String password){
-        boolean validate = SQLiteDatabase.verifyLogin(username, password); //calls function which checks if username and password are correct
+    public void validateLogin(String accountUsername, String accountPassword){
+        boolean validate = SQLiteDatabase.verifyLogin(accountUsername, accountPassword); //calls function which checks if username and password are correct
         if (validate){
             loginLabel.setText("");
-            System.out.println("Welcome "+ username);
+            System.out.println("Welcome "+ accountUsername);
             signInPage.toBack();
-            usernameButton.setText(String.valueOf(username));
+            usernameButton.setText(String.valueOf(accountUsername));
             usernameHider.toFront();
             usernameButton.toFront();
             accountHider.toBack();
             points.setTextFill(Color.rgb(255, 174, 203));
             showOffers.toFront();
-            loginTextPrompt.setText("Welcome back " + username + ", check your rewards to see your specialised offers!");
+            loginTextPrompt.setText("Welcome back " + accountUsername + ", check your rewards to see your specialised offers!");
             subTitle.setText("We are proud that you are one of 4+ pastel users.");
             logout.setOpacity(100);
-            int accountBalance = SQLiteDatabase.accountBalance(username);
+            int accountBalance = SQLiteDatabase.accountBalance(accountUsername);
             points.setText(String.valueOf(accountBalance));
             points2.setText(String.valueOf(accountBalance));
             points3.setText(String.valueOf(accountBalance));
-            usernameLabel.setText(username);
-            usernameLabel2.setText(username);
+            usernameLabel.setText(accountUsername);
+            usernameLabel2.setText(accountUsername);
 
             homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
             rewardsButton.setStyle("-fx-background-color: #1C1316;");
             accountButton.setStyle("-fx-background-color: #1C1316;");
-
         }
         if(!validate){
             loginLabel.setText("You entered the wrong username or password!");
         }
     }
 
-    public void validateSignUp(String firstName, String secondName, String emailAddress, String password, String username){
-        boolean checkusername = SQLiteDatabase.CheckUserName(username);
-        if (checkusername == true) {
-            if (password.length() < 8) {
+    public void validateSignUp(String firstName, String secondName, String emailAddress, String accountPassword, String accountUsername){
+        boolean checkUsername = SQLiteDatabase.CheckUserName(accountUsername);
+        if (checkUsername) {
+            if (accountPassword.length() < 8) {
                 loginLabel1.setText("password is too short");
             }
             else{
-                SQLiteDatabase.insertRecords(username, password, emailAddress, firstName, secondName);
-                loginLabel1.setText("Successfully created, welcome " + username);
+                SQLiteDatabase.insertRecords(accountUsername, accountPassword, emailAddress, firstName, secondName);
+                loginLabel1.setText("Successfully created, welcome " + accountUsername);
             }
         }
         else{
@@ -269,8 +241,8 @@ public class Controller {
     @FXML
     void CreateAccountButton(ActionEvent event){
         if (!firstName.getText().isBlank() && !email.getText().isBlank()&& !createPassword.getText().isBlank()&& !createUsername.getText().isBlank()&& !secondName.getText().isBlank()){ //checks if username and password has been entered
-            String Fn = firstName.getText(); String Sn = secondName.getText(); String Email = email.getText();String password = createPassword.getText(); String Username = createUsername.getText();
-            validateSignUp(Fn,Sn,Email,password,Username);
+            String firstName = this.firstName.getText(); String secondName = this.secondName.getText(); String emailAddress = email.getText();String accountPassword = createPassword.getText(); String accountUsername = createUsername.getText();
+            validateSignUp(firstName,secondName,emailAddress,accountPassword,accountUsername);
         }
         else{loginLabel1.setText("Please fill all the fields");} //if the username or password hasn't been entered
     }
@@ -292,12 +264,6 @@ public class Controller {
     void closeSignInAction(ActionEvent event){
         loginMain.setStyle("-fx-background-color: #1C1316;");
         signInPage.toBack();
-    }
-
-    @FXML
-    void closePopup(ActionEvent event){
-        loginMain.setStyle("-fx-background-color: #1C1316;");
-        loginPopup.toBack();
     }
 
 
