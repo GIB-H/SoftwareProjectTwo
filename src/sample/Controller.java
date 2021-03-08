@@ -191,7 +191,16 @@ public class Controller {
     }
 
     public void validateSignUp(String firstName, String secondName, String emailAddress, String password, String username){
-        SQLiteDatabase.insertRecords(username, password, emailAddress, firstName, secondName);
+        boolean checkusername = SQLiteDatabase.CheckUserName(username);
+        if (checkusername == true){
+            SQLiteDatabase.insertRecords(username, password, emailAddress, firstName, secondName);
+            loginLabel1.setText("Successfully created, welcome " + username);
+        }
+        if (checkusername == false){
+            loginLabel1.setText("Username already in use");
+
+        }
+
     }
     @FXML
     void CreateAccountButton(ActionEvent event){

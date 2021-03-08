@@ -44,6 +44,30 @@ public class SQLiteDatabase {
 
 
     }
+    public static boolean CheckUserName(String username){
+        Connection conn = connect();
+        String SQL = "SELECT * FROM LoginInfo WHERE Username = ?OR (Username IS NULL)";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, username);
+            ResultSet result = pstmt.executeQuery();
+
+            if(result.next()){
+                System.out.println("Username is already used");
+                return false;
+
+
+            } else {
+                System.out.println("Username isnt used");
+                return true;
+            }
+        }
+        catch(Exception e){
+            System.out.println("username isnt used");
+            return true;
+        }
+
+    }
 
     public static void insertRecords(String username, String password, String emailAddress, String firstName, String lastName) {
         Connection conn = connect();
