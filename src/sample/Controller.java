@@ -40,7 +40,16 @@ public class Controller {
     private AnchorPane homePage;
     @FXML
     private AnchorPane accountPage;
-
+    @FXML
+    private Label FNlabel;
+    @FXML
+    private Label SNLabel;
+    @FXML
+    private Label EMLabel;
+    @FXML
+    private Label UNLabel;
+    @FXML
+    private Label AccountTypeLabel;
     @FXML
     private Button loginMain;
     @FXML
@@ -152,6 +161,17 @@ public class Controller {
         accountButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
         homeButton.setStyle("-fx-background-color: #1C1316;");
         rewardsButton.setStyle("-fx-background-color: #1C1316;");
+        String username = userNameField.getText();
+        String Fn = SQLiteDatabase.accountFirstName(username);
+        String Sn = SQLiteDatabase.accountSecondName(username);
+        String Email = SQLiteDatabase.accountEmailAddress(username);
+
+
+        FNlabel.setText(Fn);
+        SNLabel.setText(Sn);
+        EMLabel.setText(Email);
+        UNLabel.setText(username);
+        AccountTypeLabel.setText("Free account");
 
     }
 

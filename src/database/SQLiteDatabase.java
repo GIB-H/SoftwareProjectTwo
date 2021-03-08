@@ -198,35 +198,6 @@ public class SQLiteDatabase {
         return privilegeLevel;
     }
 
-    public void queryRecords(String accountUsername, String accountPassword) {
-        Connection conn = connect();
-        // declare an array list to store the search results
-        ArrayList<ArrayList<Object>> data;
-        try {
-            String SQL = "SELECT Username, Password, PrivilegeLevel FROM LoginInfo WHERE Username = ?";
-            PreparedStatement pstmt = conn.prepareStatement(SQL);
-            pstmt.setString(1,accountUsername);
-            pstmt.setString(2,accountPassword);
-            data = new ArrayList<>();
-            ResultSet result = pstmt.executeQuery();
-            {
-                // loop through the search results
-                while(result.next()) {
-                    result.getString("Username");
-                    result.getString("Password");
-                    result.getString("PrivilegeLevel");
-
-                    ArrayList<Object> record = new ArrayList<>();
-                    record.add(accountUsername);
-                    record.add(accountPassword);
-                    data.add(record);
-                }
-            }
-            printData(data);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
     public static void UpdatePassword(String username, String newpassword){
         String SQL = "UPDATE LoginInfo SET Password = ? WHERE Username = '" + username + "'";
 
