@@ -160,10 +160,16 @@ public class Controller {
     @FXML
     void setFootLockerpoints(ActionEvent event){
         Account user = loginInfo(null);
-        user.simPurchase(-750);
+        user.simPurchase(-75000);
         String username = userNameField.getText();
         String balance = String.valueOf(user.getAccountBalance());
         SQLiteDatabase.updateBalance(username, balance);
+        setpoints(balance);
+    }
+    void setpoints(String accountBalance){
+        points.setText(String.valueOf(accountBalance));
+        points2.setText(String.valueOf(accountBalance));
+        points3.setText(String.valueOf(accountBalance));
     }
     @FXML
     void changepassword(ActionEvent event){
