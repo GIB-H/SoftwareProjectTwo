@@ -198,6 +198,26 @@ public class SQLiteDatabase {
         return privilegeLevel;
     }
 
+    public static String accountPassword(String accountUsername) {
+        // establish database connection
+        Connection conn = connect();
+        // initialise email address variable
+        String password = "";
+        try {
+            // search for firstname in user record
+            String SQL = "SELECT Password FROM LoginInfo WHERE Username = " + "'" + accountUsername + "'";
+            //
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            ResultSet result = pstmt.executeQuery();
+            password = result.getString("Password");
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return password;
+    }
+
+
     public static void UpdatePassword(String username, String newpassword){
         String SQL = "UPDATE LoginInfo SET Password = ? WHERE Username = '" + username + "'";
 
@@ -205,8 +225,6 @@ public class SQLiteDatabase {
             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             // set parameters
             pstmt.setString(1, newpassword);
-            System.out.println(username);
-            System.out.println(newpassword);
             // save changes
             pstmt.executeUpdate();
             conn.close();

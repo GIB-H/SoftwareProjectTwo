@@ -97,4 +97,8 @@ public class Account {
         this.privilegeLevel = privilegeLevel;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

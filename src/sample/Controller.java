@@ -322,8 +322,9 @@ public class Controller {
     }
     @FXML
     void DeleteAccountOnAction(ActionEvent event){
-        String accountUsername = userNameField.getText();
-        String accountPassword = passwordField.getText(); // original password
+        Account user = loginInfo(null);
+        String accountUsername = user.getAccountUsername();
+        String accountPassword = user.getPassword(); // original password
         String reEnteredPassword = deletePassword.getText(); // add a second password field
         String reEnteredUsername = deleteUsername.getText();
         //add a are u sure screen which requires the username to enter their password again and compare to password
@@ -349,7 +350,7 @@ public class Controller {
         String accountEmailAddress = SQLiteDatabase.accountEmailAddress(accountUsername);
         int accountBalance = SQLiteDatabase.accountBalance(accountUsername);
         int accountPrivilegeLevel = SQLiteDatabase.privilegeLevel(accountUsername);
-        String password = passwordField.getText();
+        String password = SQLiteDatabase.accountPassword(accountUsername);
 
         user = new Account(accountUsername, accountFirstName, accountSecondName, accountEmailAddress, accountBalance, accountPrivilegeLevel, password);
         return user;
@@ -444,6 +445,8 @@ public class Controller {
         loginMain.setStyle("-fx-background-color: #1C1316;");
         loginPopup.toBack();
         updatePassWindow.toBack();
+        oldPassword.clear();
+        ChangePasswordField.clear();
     }
 
     @FXML
@@ -492,6 +495,8 @@ public class Controller {
         loginMain.setStyle("-fx-background-color: #1C1316;");
         homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
         randomPurchaseButton.setText("Random Purchase");
+        oldPassword.clear();
+        ChangePasswordField.clear();
     }
 
     public void openPassWindow(){
