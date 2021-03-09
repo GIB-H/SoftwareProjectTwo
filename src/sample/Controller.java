@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.prism.Image;
 import database.SQLiteDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,6 +53,8 @@ public class Controller {
     private Label AccountTypeLabel;
     @FXML
     private Button loginMain;
+    @FXML
+    private Button FootLocker;
     @FXML
     private AnchorPane signInPage;
     @FXML
@@ -153,6 +156,14 @@ public class Controller {
         //design to show the user is a higher member
         //deals require less points to purchase
         //get 1.5 more points than user per transation
+    }
+    @FXML
+    void setFootLockerpoints(ActionEvent event){
+        Account user = loginInfo(null);
+        user.simPurchase(-750);
+        String username = userNameField.getText();
+        String balance = String.valueOf(user.getAccountBalance());
+        SQLiteDatabase.updateBalance(username, balance);
     }
     @FXML
     void changepassword(ActionEvent event){
