@@ -157,19 +157,22 @@ public class Controller {
 
     @FXML
     void accountButtonAction(ActionEvent event) {
+        Account user = new Account(null, null, null, null, 1, 0, null);
+        user = loginInfo(user);
+
         accountPage.toFront();
         accountButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
         homeButton.setStyle("-fx-background-color: #1C1316;");
         rewardsButton.setStyle("-fx-background-color: #1C1316;");
         String username = userNameField.getText();
-        String Fn = SQLiteDatabase.accountFirstName(username);
-        String Sn = SQLiteDatabase.accountSecondName(username);
-        String Email = SQLiteDatabase.accountEmailAddress(username);
+        String firstName = user.getFirstName();
+        String secondName = user.getSecondName();
+        String email = user.getEmailAddress();
 
 
-        FNlabel.setText(Fn);
-        SNLabel.setText(Sn);
-        EMLabel.setText(Email);
+        FNlabel.setText(firstName);
+        SNLabel.setText(secondName);
+        EMLabel.setText(email);
         UNLabel.setText(username);
         AccountTypeLabel.setText("Free account");
 
@@ -227,15 +230,16 @@ public class Controller {
         String accountEmailAddress = SQLiteDatabase.accountEmailAddress(accountUsername);
         int accountBalance = SQLiteDatabase.accountBalance(accountUsername);
         int accountPrivilegeLevel = SQLiteDatabase.privilegeLevel(accountUsername);
+        String password = passwordField.getText();
 
-        user = new Account(accountUsername, accountFirstName, accountSecondName, accountEmailAddress, accountBalance, accountPrivilegeLevel);
+        user = new Account(accountUsername, accountFirstName, accountSecondName, accountEmailAddress, accountBalance, accountPrivilegeLevel, password);
         return user;
     }
 
     public void validateLogin(String accountUsername, String accountPassword){
         boolean validate = SQLiteDatabase.verifyLogin(accountUsername, accountPassword); //calls function which checks if username and password are correct
         if (validate){
-            Account user = new Account(null, null, null, null, 1, 0);
+            Account user = new Account(null, null, null, null, 1, 0, null);
             user = loginInfo(user);
             int accountBalance = user.getAccountBalance();
             String accountFirstName = user.getFirstName();
@@ -328,7 +332,7 @@ public class Controller {
         System.out.println(randomNum);
         randomPurchaseButton.setText("Spent £"+randomNum);
         int purchaseValue = randomNum*100;
-        Account user = new Account(null, null, null, null, 1, 0);
+        Account user = new Account(null, null, null, null, 1, 0, null);
         user = loginInfo(user);
         user.simPurchase(purchaseValue);
 

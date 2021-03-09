@@ -24,15 +24,16 @@ public class Account {
     String emailAddress;
     int accountBalance;
     int privilegeLevel; // 0 = regular user | 1 = premium user | 2 = admin user
+    String password;
 
     // user.Account Class Constructor
-    public Account(String accountUsername, String firstName, String secondName, String emailAddress, int accountBalance, int privilegeLevel){
+    public Account(String accountUsername, String firstName, String secondName, String emailAddress, int accountBalance, int privilegeLevel, String password){
         // Sets string attributes
         this.accountUsername = accountUsername;
         this.firstName = firstName;
         this.secondName = secondName;
         this.emailAddress = emailAddress;
-
+        this.password = password;
         // Sets integer attributes
         this.accountBalance = accountBalance;
         this.privilegeLevel = privilegeLevel;
@@ -86,6 +87,10 @@ public class Account {
 
     public int getPrivilegeLevel() {
         return privilegeLevel;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
 }
