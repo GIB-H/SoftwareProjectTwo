@@ -64,7 +64,8 @@ public class Controller {
     private Button login;
     @FXML
     private Button signUp;
-
+    @FXML
+    private Button Premium_Member;
     @FXML
     private AnchorPane registerPage;
     @FXML
@@ -124,6 +125,16 @@ public class Controller {
     @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
 
+    }
+    @FXML
+    void SimulatePurchase (ActionEvent event){
+        //NEEDS TO SIMUATE THE USER PUTTING A CREDIT CARD/DEBIT CARD IN(MAYBE A NEW TABLE WITH SOME "VALID" CARDS
+        //AND SOME CARDS WITH NOT ENOUGH TO BUY THE NEW MEMBERSHIP
+
+        //new button to cancel membership(Are u sure?)
+        //design to show the user is a higher member
+        //deals require less points to purchase
+        //get 1.5 more points than user per transation
     }
     @FXML
     void changepassword(ActionEvent event){
