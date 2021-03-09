@@ -12,9 +12,7 @@ import javafx.scene.paint.Color;
 import user.Account;
 import user.Vouchers;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -350,6 +348,7 @@ public class Controller {
         //add a are u sure screen which requires the username to enter their password again and compare to password
         if (accountPassword.equals(reEnteredPassword) && accountUsername.equals(reEnteredUsername)){
             SQLiteDatabase.deleteRecord(accountUsername);
+            removeRecord("userVouchers.csv", accountUsername, 1);
             logoutEvents();
         }
         else{
@@ -360,6 +359,42 @@ public class Controller {
         }
 
 
+
+    }
+
+    public void removeRecord(String filepath, String removeTerm, int positionOfTerm) {
+        int position = positionOfTerm - 1;
+        String tempFile = "temp.csv";
+        File oldFile = new File(filepath);
+        File newFile = new File(tempFile);
+
+        try {
+            FileWriter fw = new FileWriter(tempFile, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            FileReader fr = new FileReader(filepath);
+            BufferedReader br = new BufferedReader(fr);
+
+            String currentLine;
+            while((currentLine = br.readLine()) != null) {
+                String[] data = currentLine.split(",");
+                if (!data[position].equalsIgnoreCase(removeTerm)) {
+                    pw.println(currentLine);
+                }
+            }
+
+            pw.flush();
+            pw.close();
+            fr.close();
+            br.close();
+            bw.close();
+            fw.close();
+            oldFile.delete();
+            File dump = new File(filepath);
+            newFile.renameTo(dump);
+        } catch (Exception var15) {
+            var15.printStackTrace();
+        }
 
     }
 
@@ -517,6 +552,8 @@ public class Controller {
         randomPurchaseButton.setText("Random Purchase");
         oldPassword.clear();
         ChangePasswordField.clear();
+        deleteUsername.clear();
+        deletePassword.clear();
     }
 
     public void openPassWindow(){
