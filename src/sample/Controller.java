@@ -218,10 +218,12 @@ public class Controller {
         EMLabel.setText(email);
         UNLabel.setText(username);
         if(user.getPrivilegeLevel()==0){
-            AccountTypeLabel.setText("Free Account");
+            AccountTypeLabel.setText("Standard Account");
+            Premium_Member.setText("Become A Premium Member Today");
         }
         if(user.getPrivilegeLevel()==1){
             AccountTypeLabel.setText("Premium Account");
+            Premium_Member.setText("Cancel Membership");
         }
 
 
@@ -315,9 +317,6 @@ public class Controller {
             rewardsButton.setStyle("-fx-background-color: #1C1316;");
             accountButton.setStyle("-fx-background-color: #1C1316;");
 
-            if(user.getPrivilegeLevel()==1){
-                Premium_Member.setOpacity(0);
-            }
 
 
 
@@ -417,7 +416,6 @@ public class Controller {
         loginMain.setStyle("-fx-background-color: #1C1316;");
         homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
         randomPurchaseButton.setText("Random Purchase");
-        Premium_Member.setOpacity(100);
     }
 
     public void openPassWindow(){
@@ -428,13 +426,20 @@ public class Controller {
 
     @FXML
     public void premiumStatus(ActionEvent event){
+        String privilege = null;
         Account user = loginInfo(null);
         String username = user.getAccountUsername();
-        user.setPrivilegeLevel(1);
-        String privilege = String.valueOf(user.getPrivilegeLevel());
+        if(user.getPrivilegeLevel()==0){
+            privilege = String.valueOf(1);
+            AccountTypeLabel.setText("Premium Account");
+            Premium_Member.setText("Cancel Membership");
+        }
+        if(user.getPrivilegeLevel()==1){
+            privilege = String.valueOf(0);
+            AccountTypeLabel.setText("Standard Account");
+            Premium_Member.setText("Become A Premium Member Today");
+        }
         SQLiteDatabase.updatePremium(username, privilege);
-        AccountTypeLabel.setText("Premium Account");
-
 
     }
 
