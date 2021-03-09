@@ -1,10 +1,10 @@
 package user;
 
-public class vouchers {
+public class Vouchers {
 
     int cost;
 
-    public vouchers(int cost) {
+    public Vouchers(int cost) {
         this.cost = cost;
 
     }

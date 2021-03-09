@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.prism.Image;
 import database.SQLiteDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import user.Account;
-import user.vouchers;
+import user.Vouchers;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -165,7 +164,7 @@ public class Controller {
         //get 1.5 more points than user per transation
     }
 
-    public void purchaseVoucher(int cost, vouchers voucher){
+    public void purchaseVoucher(int cost, Vouchers voucher){
         Account user = loginInfo(null);
         if(user.getPrivilegeLevel() == 0){
             if(user.getAccountBalance()>=voucher.getCost()){
@@ -189,33 +188,33 @@ public class Controller {
 
     @FXML
     void setUrbanDecaypoints(ActionEvent event){
-        user.vouchers voucher = new vouchers(300);
+        Vouchers voucher = new Vouchers(300);
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
 
     @FXML
     void setFootLockerpoints(ActionEvent event){
-        user.vouchers voucher = new vouchers(750);
+        Vouchers voucher = new Vouchers(750);
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     @FXML
     void setpizzapoints(ActionEvent event){
-        user.vouchers voucher = new vouchers(800);
+        Vouchers voucher = new Vouchers(800);
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     @FXML
     void setMandSPoints(ActionEvent event){
-        user.vouchers voucher = new vouchers(150);
+        Vouchers voucher = new Vouchers(150);
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     @FXML
     void setAsospoints(ActionEvent event){
-        user.vouchers voucher = new vouchers(1000);
+        Vouchers voucher = new Vouchers(1000);
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     @FXML
     void setLOOKFANTASTICpoints(ActionEvent event){
-        user.vouchers voucher = new vouchers(500);
+        Vouchers voucher = new Vouchers(500);
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     void setpoints(String accountBalance){
