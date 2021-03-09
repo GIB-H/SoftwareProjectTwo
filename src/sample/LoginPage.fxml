@@ -101,40 +101,6 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="loginPopup" layoutX="388.0" layoutY="161.0" prefHeight="398.0" prefWidth="504.0" style="-fx-background-color: #1C1316; -fx-background-radius: 20;">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="504.0" text="Delete Account" textFill="#ffaecb">
-               <font>
-                  <Font name="Comic Sans MS" size="40.0" />
-               </font>
-            </Label>
-            <TextField fx:id="deleteUsername" alignment="CENTER" layoutX="86.0" layoutY="121.0" prefHeight="48.0" prefWidth="332.0" promptText="Username">
-               <font>
-                  <Font name="System" size="12.0" />
-               </font>
-            </TextField>
-            <PasswordField fx:id="deletePassword" alignment="CENTER" layoutX="86.0" layoutY="181.0" prefHeight="48.0" prefWidth="332.0" promptText="Password">
-               <font>
-                  <Font name="System" size="12.0" />
-               </font>
-            </PasswordField>
-            <Label fx:id="loginLabel2" alignment="CENTER" layoutX="86.0" layoutY="236.0" onDragDetected="#loginButtonOnAction" prefHeight="17.0" prefWidth="332.0" text=" " textFill="RED">
-               <font>
-                  <Font name="Comic Sans MS" size="12.0" />
-               </font>
-            </Label>
-            <Button fx:id="confirmDelete" alignment="CENTER" layoutX="86.0" layoutY="323.0" mnemonicParsing="false" onAction="#DeleteAccountOnAction" prefHeight="48.0" prefWidth="332.0" style="-fx-background-color: #99C9F1; -fx-background-radius: 30;" text="Sign Up" textFill="WHITE">
-               <font>
-                  <Font name="Comic Sans MS" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="closeDelete" layoutX="465.0" layoutY="5.0" mnemonicParsing="false" onAction="#closePopup" style="-fx-background-color: #1C1316;" text="X" textFill="RED">
-               <font>
-                  <Font name="Comic Sans MS" size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="registerPage" layoutX="388.0" layoutY="161.0" prefHeight="398.0" prefWidth="504.0" style="-fx-background-color: #1C1316; -fx-background-radius: 20;">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="73.0" prefWidth="504.0" text="Register" textFill="#ffaecb">
@@ -190,6 +156,195 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="584.0" prefWidth="1013.0" style="-fx-background-color: #8F576A;" />
               </content>
             </ScrollPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="accountPage" layoutY="100.0" prefHeight="620.0" prefWidth="1280.0" style="-fx-background-color: #8F576A;">
+         <children>
+            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="580.0" prefWidth="165.0" style="-fx-background-color: #262626; -fx-background-radius: 20;">
+               <children>
+                  <Label fx:id="points3" alignment="CENTER" layoutY="319.0" prefHeight="44.0" prefWidth="165.0" text="N/A" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="275.0" prefHeight="44.0" prefWidth="165.0" text="My Balance:" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel2" alignment="CENTER" layoutX="2.0" layoutY="231.0" prefHeight="44.0" prefWidth="165.0" text="Username" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="logout" layoutX="10.0" layoutY="486.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="80.0" prefWidth="145.0" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="Logout" textFill="#ffaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="205.0" layoutY="20.0" prefHeight="580.0" prefWidth="517.5" style="-fx-background-color: #262626; -fx-background-radius: 20;">
+               <children>
+                  <Line endX="417.0" endY="1.52587890625E-5" layoutX="101.0" layoutY="59.0" startX="-100.0" stroke="WHITE" />
+                  <Line endX="-88.33331298828125" endY="465.99993896484375" layoutX="214.0" layoutY="114.0" startX="-88.33334350585938" startY="-114.00000762939453" stroke="WHITE" />
+                  <Line endX="-12.65875244140625" endY="451.33331298828125" layoutX="408.0" layoutY="130.0" startX="-12.65875244140625" startY="-130.0" stroke="WHITE" />
+                  <Label fx:id="usernameLabel21" alignment="CENTER" layoutX="-18.0" layoutY="21.0" prefHeight="44.0" prefWidth="165.0" text="Purchase" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel211" alignment="CENTER" layoutX="177.0" layoutY="22.0" prefHeight="44.0" prefWidth="165.0" text="Cost Of Item" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel2111" alignment="CENTER" layoutX="407.0" layoutY="22.0" prefHeight="44.0" prefWidth="95.0" text="Points" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane layoutX="742.5" layoutY="20.0" prefHeight="580.0" prefWidth="517.5" style="-fx-background-color: #262626; -fx-background-radius: 20;">
+               <children>
+                  <Button fx:id="DeleteAccount" layoutX="270.0" layoutY="518.0" mnemonicParsing="false" onAction="#openDeleteAccount" prefHeight="54.0" prefWidth="238.0" style="-fx-background-color: #262626; -fx-background-radius: 30;" text="Delete Account" textFill="RED">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="updatePassword" layoutX="16.0" layoutY="518.0" mnemonicParsing="false" onAction="#openPassWindow" prefHeight="44.0" prefWidth="245.0" style="-fx-background-color: #262626; -fx-background-radius: 30;" text="Update Password" textFill="RED">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="usernameLabel2112" layoutX="20.0" layoutY="90.0" prefHeight="44.0" prefWidth="165.0" text="First Name:" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel21121" layoutX="20.0" layoutY="144.0" prefHeight="44.0" prefWidth="165.0" text="Second Name:" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel211211" layoutX="20.0" layoutY="198.0" prefHeight="44.0" prefWidth="165.0" text="Email Address" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel2112111" layoutX="20.0" layoutY="252.0" prefHeight="44.0" prefWidth="165.0" text="User Name:" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel21122" alignment="CENTER" prefHeight="80.0" prefWidth="517.5" text="Account Details" textFill="WHITE">
+                     <font>
+                        <Font name="Comic Sans MS" size="34.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="FNlabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="90.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="SNLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="144.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="EMLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="198.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel21121111" layoutX="20.0" layoutY="306.0" prefHeight="44.0" prefWidth="165.0" text="Account Type:" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="UNLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="252.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="AccountTypeLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="306.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="Premium_Member" layoutX="-3.0" layoutY="396.0" mnemonicParsing="false" onAction="#SimulatePurchase" prefHeight="54.0" prefWidth="518.0" style="-fx-background-color: #262626; -fx-background-radius: 30;" text="Become A Premium Member Today" textFill="#da3fd2">
+                     <font>
+                        <Font name="Comic Sans MS" size="25.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
+         </children></AnchorPane>
+      <AnchorPane fx:id="loginPopup" layoutX="388.0" layoutY="161.0" prefHeight="398.0" prefWidth="504.0" style="-fx-background-color: #1C1316; -fx-background-radius: 20;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="504.0" text="Delete Account" textFill="#ffaecb">
+               <font>
+                  <Font name="Comic Sans MS" size="40.0" />
+               </font>
+            </Label>
+            <TextField fx:id="deleteUsername" alignment="CENTER" layoutX="86.0" layoutY="121.0" prefHeight="48.0" prefWidth="332.0" promptText="Username">
+               <font>
+                  <Font name="System" size="12.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="deletePassword" alignment="CENTER" layoutX="86.0" layoutY="181.0" prefHeight="48.0" prefWidth="332.0" promptText="Password">
+               <font>
+                  <Font name="System" size="12.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="loginLabel2" alignment="CENTER" layoutX="86.0" layoutY="236.0" onDragDetected="#loginButtonOnAction" prefHeight="17.0" prefWidth="332.0" text=" " textFill="RED">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="confirmDelete" alignment="CENTER" layoutX="86.0" layoutY="323.0" mnemonicParsing="false" onAction="#DeleteAccountOnAction" prefHeight="48.0" prefWidth="332.0" style="-fx-background-color: #99C9F1; -fx-background-radius: 30;" text="Sign Up" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="closeDelete" layoutX="465.0" layoutY="5.0" mnemonicParsing="false" onAction="#closePopup" style="-fx-background-color: #1C1316;" text="X" textFill="RED">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="updatePassWindow" layoutX="398.0" layoutY="171.0" prefHeight="398.0" prefWidth="504.0" style="-fx-background-color: #1C1316; -fx-background-radius: 20;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="504.0" text="Update Password" textFill="#ffaecb">
+               <font>
+                  <Font name="Comic Sans MS" size="40.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="ChangePasswordField" alignment="CENTER" layoutX="86.0" layoutY="181.0" prefHeight="48.0" prefWidth="332.0" promptText="New Password">
+               <font>
+                  <Font name="System" size="12.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="wrongPasswords" alignment="CENTER" layoutX="86.0" layoutY="236.0" onDragDetected="#loginButtonOnAction" prefHeight="17.0" prefWidth="332.0" text=" " textFill="RED">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="confirmChange" alignment="CENTER" layoutX="86.0" layoutY="323.0" mnemonicParsing="false" onAction="#changepassword" prefHeight="48.0" prefWidth="332.0" style="-fx-background-color: #99C9F1; -fx-background-radius: 30;" text="Confirm Changes" textFill="WHITE">
+               <font>
+                  <Font name="Comic Sans MS" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="closeUpdate" layoutX="465.0" layoutY="5.0" mnemonicParsing="false" onAction="#closePopup" style="-fx-background-color: #1C1316;" text="X" textFill="RED">
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="oldPassword" alignment="CENTER" layoutX="86.0" layoutY="121.0" prefHeight="48.0" prefWidth="332.0" promptText="Current Password">
+               <font>
+                  <Font name="System" size="12.0" />
+               </font>
+            </PasswordField>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="homePage" layoutY="100.0" prefHeight="620.0" prefWidth="1280.0" style="-fx-background-color: #FEAECB;">
@@ -284,127 +439,5 @@
                </children></AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="accountPage" layoutY="100.0" prefHeight="620.0" prefWidth="1280.0" style="-fx-background-color: #8F576A;">
-         <children>
-            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="580.0" prefWidth="165.0" style="-fx-background-color: #262626; -fx-background-radius: 20;">
-               <children>
-                  <Label fx:id="points3" alignment="CENTER" layoutY="319.0" prefHeight="44.0" prefWidth="165.0" text="N/A" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutY="275.0" prefHeight="44.0" prefWidth="165.0" text="My Balance:" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel2" alignment="CENTER" layoutX="2.0" layoutY="231.0" prefHeight="44.0" prefWidth="165.0" text="Username" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="logout" layoutX="10.0" layoutY="486.0" mnemonicParsing="false" onAction="#setLogout" prefHeight="80.0" prefWidth="145.0" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="Logout" textFill="#ffaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="25.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="205.0" layoutY="20.0" prefHeight="580.0" prefWidth="517.5" style="-fx-background-color: #262626; -fx-background-radius: 20;">
-               <children>
-                  <Line endX="417.0" endY="1.52587890625E-5" layoutX="101.0" layoutY="59.0" startX="-100.0" stroke="WHITE" />
-                  <Line endX="-88.33331298828125" endY="465.99993896484375" layoutX="214.0" layoutY="114.0" startX="-88.33334350585938" startY="-114.00000762939453" stroke="WHITE" />
-                  <Line endX="-12.65875244140625" endY="451.33331298828125" layoutX="408.0" layoutY="130.0" startX="-12.65875244140625" startY="-130.0" stroke="WHITE" />
-                  <Label fx:id="usernameLabel21" alignment="CENTER" layoutX="-18.0" layoutY="21.0" prefHeight="44.0" prefWidth="165.0" text="Purchase" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel211" alignment="CENTER" layoutX="177.0" layoutY="22.0" prefHeight="44.0" prefWidth="165.0" text="Cost Of Item" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel2111" alignment="CENTER" layoutX="407.0" layoutY="22.0" prefHeight="44.0" prefWidth="95.0" text="Points" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
-            <AnchorPane layoutX="742.5" layoutY="20.0" prefHeight="580.0" prefWidth="517.5" style="-fx-background-color: #262626; -fx-background-radius: 20;">
-               <children>
-                  <Button fx:id="DeleteAccount" layoutX="270.0" layoutY="518.0" mnemonicParsing="false" onAction="#openDeleteAccount" prefHeight="54.0" prefWidth="238.0" style="-fx-background-color: #262626; -fx-background-radius: 30;" text="Delete Account" textFill="RED">
-                     <font>
-                        <Font name="Comic Sans MS" size="25.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="updatePassword" layoutX="16.0" layoutY="518.0" mnemonicParsing="false" onAction="#changepassword" prefHeight="44.0" prefWidth="245.0" style="-fx-background-color: #262626; -fx-background-radius: 30;" text="Update Password" textFill="RED">
-                     <font>
-                        <Font name="Comic Sans MS" size="25.0" />
-                     </font>
-                  </Button>
-                  <PasswordField fx:id="ChangePasswordField" layoutX="13.0" layoutY="484.0" prefHeight="25.0" prefWidth="252.0" />
-                  <Label fx:id="usernameLabel2112" layoutX="20.0" layoutY="90.0" prefHeight="44.0" prefWidth="165.0" text="First Name:" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel21121" layoutX="20.0" layoutY="144.0" prefHeight="44.0" prefWidth="165.0" text="Second Name:" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel211211" layoutX="20.0" layoutY="198.0" prefHeight="44.0" prefWidth="165.0" text="Email Address" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel2112111" layoutX="20.0" layoutY="252.0" prefHeight="44.0" prefWidth="165.0" text="User Name:" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel21122" alignment="CENTER" prefHeight="80.0" prefWidth="517.5" text="Account Details" textFill="WHITE">
-                     <font>
-                        <Font name="Comic Sans MS" size="34.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="FNlabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="90.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="SNLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="144.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="EMLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="198.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel21121111" layoutX="20.0" layoutY="306.0" prefHeight="44.0" prefWidth="165.0" text="Account Type:" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="UNLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="252.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="AccountTypeLabel" alignment="CENTER_RIGHT" layoutX="218.0" layoutY="306.0" prefHeight="44.0" prefWidth="280.0" text="NA" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="Premium_Member" layoutX="-3.0" layoutY="396.0" mnemonicParsing="false" onAction="#SimulatePurchase" prefHeight="54.0" prefWidth="518.0" style="-fx-background-color: #262626; -fx-background-radius: 30;" text="Become A Premium Member Today" textFill="#da3fd2">
-                     <font>
-                        <Font name="Comic Sans MS" size="25.0" />
-                     </font>
-                  </Button>
-               </children></AnchorPane>
-         </children></AnchorPane>
    </children>
 </AnchorPane>

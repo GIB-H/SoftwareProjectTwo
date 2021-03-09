@@ -120,6 +120,17 @@ public class Controller {
     private Button closeDelete;
     @FXML
     private Button randomPurchaseButton;
+    @FXML
+    private AnchorPane updatePassWindow;
+    @FXML
+    private Button closeUpdate;
+    @FXML
+    private PasswordField oldPassword;
+    @FXML
+    private Button confirmChange;
+    @FXML
+    private Label wrongPasswords;
+
 
 
     @FXML
@@ -138,9 +149,23 @@ public class Controller {
     }
     @FXML
     void changepassword(ActionEvent event){
-        String username = userNameField.getText();
+        Account user = loginInfo(null);
+
+        String username = user.getAccountUsername();
+        String oldpassword = user.getPassword();
+        String oldpasswordconfirm = oldPassword.getText();
         String newpassword = ChangePasswordField.getText();
-        SQLiteDatabase.UpdatePassword(username, newpassword);
+        System.out.println(oldpassword);
+        System.out.println(newpassword);
+        if(oldpassword.equals(oldpasswordconfirm)){
+            SQLiteDatabase.UpdatePassword(username, newpassword);
+            wrongPasswords.setText("Password successfully changed.");
+            wrongPasswords.setTextFill(Color.rgb(0 , 255, 33));
+        }else {
+            wrongPasswords.setText("Please enter correct password.");
+        }
+        oldPassword.clear();
+        ChangePasswordField.clear();
 
     }
     @FXML
@@ -168,8 +193,7 @@ public class Controller {
 
     @FXML
     void accountButtonAction(ActionEvent event) {
-        Account user = new Account(null, null, null, null, 1, 0, null);
-        user = loginInfo(user);
+        Account user = loginInfo(null);
 
         accountPage.toFront();
         accountButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
@@ -250,8 +274,7 @@ public class Controller {
     public void validateLogin(String accountUsername, String accountPassword){
         boolean validate = SQLiteDatabase.verifyLogin(accountUsername, accountPassword); //calls function which checks if username and password are correct
         if (validate){
-            Account user = new Account(null, null, null, null, 1, 0, null);
-            user = loginInfo(user);
+            Account user = loginInfo(null);
             int accountBalance = user.getAccountBalance();
             String accountFirstName = user.getFirstName();
             loginLabel.setText("");
@@ -335,6 +358,7 @@ public class Controller {
     void closePopup(ActionEvent event){
         loginMain.setStyle("-fx-background-color: #1C1316;");
         loginPopup.toBack();
+        updatePassWindow.toBack();
     }
 
     @FXML
@@ -361,6 +385,7 @@ public class Controller {
         loginLabel.setText("");
         userNameField.clear(); //gets text from the textbox
         passwordField.clear(); //gets text from the textbox
+        ChangePasswordField.clear();
         homePage.toFront();
         usernameButton.setText("");
         usernameHider.toBack();
@@ -375,6 +400,12 @@ public class Controller {
         loginMain.setStyle("-fx-background-color: #1C1316;");
         homeButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
         randomPurchaseButton.setText("Random Purchase");
+    }
+
+    public void openPassWindow(){
+        updatePassWindow.toFront();
+        wrongPasswords.setTextFill(Color.rgb(255 , 0, 0));
+        wrongPasswords.setText("");
     }
 
 
