@@ -232,6 +232,22 @@ public class SQLiteDatabase {
         }
     }
 
+    public static void updatePremium(String username, String privilege){
+        String SQL = "UPDATE LoginInfo SET PrivilegeLevel = ? WHERE Username = '" + username + "'";
+
+        try(Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+            // set parameters
+            pstmt.setString(1, privilege);
+            // save changes
+            pstmt.executeUpdate();
+            conn.close();
+            System.out.println("Update successful!");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void updateRecord(String accountUsername, String accountPassword, int privLvl) {
         String SQL = "UPDATE LoginInfo SET Username = ?, Password = ?, PrivilegeLevel = ?";
         try(Connection conn = connect();

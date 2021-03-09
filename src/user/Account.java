@@ -93,4 +93,8 @@ public class Account {
         return password;
     }
 
+    public void setPrivilegeLevel(int privilegeLevel) {
+        this.privilegeLevel = privilegeLevel;
+    }
+
 }

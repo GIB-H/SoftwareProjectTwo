@@ -432,7 +432,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Button fx:id="Premium_Member" layoutX="10.0" layoutY="396.0" mnemonicParsing="false" onAction="#SimulatePurchase" prefHeight="80.0" prefWidth="497.5" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="Become A Premium Member Today" textFill="#da3fd2">
+                  <Button fx:id="Premium_Member" layoutX="10.0" layoutY="396.0" mnemonicParsing="false" onAction="#premiumStatus" prefHeight="80.0" prefWidth="497.5" style="-fx-background-color: #1C1316; -fx-background-radius: 30;" text="Become A Premium Member Today" textFill="#da3fd2">
                      <font>
                         <Font name="Comic Sans MS" size="25.0" />
                      </font>

@@ -210,7 +210,13 @@ public class Controller {
         SNLabel.setText(secondName);
         EMLabel.setText(email);
         UNLabel.setText(username);
-        AccountTypeLabel.setText("Free account");
+        if(user.getPrivilegeLevel()==0){
+            AccountTypeLabel.setText("Free Account");
+        }
+        if(user.getPrivilegeLevel()==1){
+            AccountTypeLabel.setText("Premium Account");
+        }
+
 
     }
 
@@ -368,8 +374,7 @@ public class Controller {
         System.out.println(randomNum);
         randomPurchaseButton.setText("Spent £"+randomNum);
         int purchaseValue = randomNum*100;
-        Account user = new Account(null, null, null, null, 1, 0, null);
-        user = loginInfo(user);
+        Account user = loginInfo(null);
         user.simPurchase(purchaseValue);
 
         String username = userNameField.getText();
@@ -407,6 +412,18 @@ public class Controller {
         updatePassWindow.toFront();
         wrongPasswords.setTextFill(Color.rgb(255 , 0, 0));
         wrongPasswords.setText("");
+    }
+
+    @FXML
+    public void premiumStatus(ActionEvent event){
+        Account user = loginInfo(null);
+        String username = user.getAccountUsername();
+        user.setPrivilegeLevel(1);
+        String privilege = String.valueOf(user.getPrivilegeLevel());
+        SQLiteDatabase.updatePremium(username, privilege);
+        AccountTypeLabel.setText("Premium Account");
+
+
     }
 
 
