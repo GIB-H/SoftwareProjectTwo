@@ -131,7 +131,14 @@ public class Controller {
     @FXML
     private Label wrongPasswords;
 
-
+    @FXML
+    private PasswordField NewPasswordField;
+    @FXML
+    private PasswordField CurrentPasswordField;
+    @FXML
+    private Button UpdatePasswordButton;
+    @FXML
+    private AnchorPane UpdatePasswordPage;
 
     @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
