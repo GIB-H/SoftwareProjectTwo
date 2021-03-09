@@ -163,6 +163,7 @@ public class Controller {
             wrongPasswords.setTextFill(Color.rgb(0 , 255, 33));
         }else {
             wrongPasswords.setText("Please enter correct password.");
+            wrongPasswords.setTextFill(Color.rgb(255 , 0, 0));
         }
         oldPassword.clear();
         ChangePasswordField.clear();
