@@ -448,11 +448,19 @@ public class Controller {
 
     @FXML
     void randomPurchase(ActionEvent event){
+        Account user = loginInfo(null);
         int randomNum = ThreadLocalRandom.current().nextInt(1, 100 + 1);
         System.out.println(randomNum);
-        randomPurchaseButton.setText("Spent £"+randomNum);
-        int purchaseValue = randomNum*100;
-        Account user = loginInfo(null);
+
+        int purchaseValue = 0;
+        if(user.getPrivilegeLevel()==0){
+            purchaseValue = randomNum*100;
+        }
+        if(user.getPrivilegeLevel()==1){
+            purchaseValue = randomNum*150;
+        }
+        randomPurchaseButton.setText("Spent £"+randomNum+ " +" + purchaseValue/100+ "p");
+
         user.simPurchase(purchaseValue);
 
         String username = userNameField.getText();
