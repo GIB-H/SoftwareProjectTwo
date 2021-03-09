@@ -133,6 +133,8 @@ public class Controller {
     private Button confirmChange;
     @FXML
     private Label wrongPasswords;
+    @FXML
+    private Button AsosButton;
 
     @FXML
     private PasswordField NewPasswordField;
@@ -142,6 +144,14 @@ public class Controller {
     private Button UpdatePasswordButton;
     @FXML
     private AnchorPane UpdatePasswordPage;
+    @FXML
+    private Button LookFantasicButton;
+    @FXML
+    private Button PizzaButton;
+    @FXML
+    private Button MSbutton;
+    @FXML
+    private Button UrbanDecay;
 
     @FXML
     void showOffersAction(ActionEvent event) { //temp debug button
@@ -157,10 +167,58 @@ public class Controller {
         //deals require less points to purchase
         //get 1.5 more points than user per transation
     }
+    private Boolean CheckIfEnoughPoints(){
+        return false; //need to do this
+    }
+    @FXML
+    void setUrbanDecaypoints(ActionEvent event){
+        Account user = loginInfo(null);
+        user.simPurchase(-30000);
+        String username = userNameField.getText();
+        String balance = String.valueOf(user.getAccountBalance());
+        SQLiteDatabase.updateBalance(username, balance);
+        setpoints(balance);
+    }
     @FXML
     void setFootLockerpoints(ActionEvent event){
         Account user = loginInfo(null);
         user.simPurchase(-75000);
+        String username = userNameField.getText();
+        String balance = String.valueOf(user.getAccountBalance());
+        SQLiteDatabase.updateBalance(username, balance);
+        setpoints(balance);
+    }
+    @FXML
+    void setpizzapoints(ActionEvent event){
+        Account user = loginInfo(null);
+        user.simPurchase(-80000);
+        String username = userNameField.getText();
+        String balance = String.valueOf(user.getAccountBalance());
+        SQLiteDatabase.updateBalance(username, balance);
+        setpoints(balance);
+    }
+    @FXML
+    void setMandSPoints(ActionEvent event){
+        Account user = loginInfo(null);
+        user.simPurchase(-15000);
+        String username = userNameField.getText();
+        String balance = String.valueOf(user.getAccountBalance());
+        SQLiteDatabase.updateBalance(username, balance);
+        setpoints(balance);
+    }
+    @FXML
+    void setAsospoints(ActionEvent event){
+        Account user = loginInfo(null);
+        user.simPurchase(-100000);
+        String username = userNameField.getText();
+        String balance = String.valueOf(user.getAccountBalance());
+        SQLiteDatabase.updateBalance(username, balance);
+        setpoints(balance);
+    }
+    @FXML
+    void setLOOKFANTASTICpoints(ActionEvent event){
+        Account user = loginInfo(null);
+        user.simPurchase(-50000);
         String username = userNameField.getText();
         String balance = String.valueOf(user.getAccountBalance());
         SQLiteDatabase.updateBalance(username, balance);

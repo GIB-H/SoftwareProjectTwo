@@ -469,6 +469,16 @@
                         </ImageView>
                         <Text layoutX="58.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£10 voucher for 750 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
                         <Button fx:id="FootLocker" layoutX="63.0" layoutY="18.0" mnemonicParsing="false" onAction="#setFootLockerpoints" opacity="0.0" prefHeight="299.0" prefWidth="203.0" text="FL" />
+                        <Button fx:id="AsosButton" layoutX="354.0" layoutY="12.0" mnemonicParsing="false" onAction="#setAsospoints" opacity="0.0" prefHeight="305.0" prefWidth="207.0" text="Asos" />
+                        <Text layoutX="350.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25% off code for 1000 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
+                        <Text layoutX="650.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 for 2 voucher for 500 points" textAlignment="CENTER" wrappingWidth="209.05233563292086" />
+                        <Button fx:id="LookFantasicButton" layoutX="649.0" layoutY="8.0" mnemonicParsing="false" onAction="#setLOOKFANTASTICpoints" opacity="0.0" prefHeight="310.0" prefWidth="215.0" text="Button" />
+                        <Text layoutX="58.0" layoutY="715.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Large Pizza for 800 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
+                        <Text layoutX="352.0" layoutY="715.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meal Deal for 150 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
+                        <Text layoutX="647.0" layoutY="715.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£5 voucher for 300 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
+                        <Button fx:id="PizzaButton" layoutX="58.0" layoutY="411.0" mnemonicParsing="false" onAction="#setpizzapoints" opacity="0.0" prefHeight="299.0" prefWidth="215.0" text="Pizza" />
+                        <Button fx:id="MSbutton" layoutX="354.0" layoutY="411.0" mnemonicParsing="false" onAction="#setMandSPoints" opacity="0.0" prefHeight="299.0" prefWidth="207.0" text="Button" />
+                        <Button fx:id="UrbanDecay" layoutX="650.0" layoutY="412.0" mnemonicParsing="false" onAction="#setUrbanDecaypoints" opacity="0.0" prefHeight="299.0" prefWidth="205.0" text="Makeup" />
                      </children>
                   </AnchorPane>
               </content>

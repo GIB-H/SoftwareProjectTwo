@@ -14,6 +14,79 @@
 
 <AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
+      <AnchorPane fx:id="rewardsPage" layoutY="100.0" prefHeight="620.0" prefWidth="1280.0" style="-fx-background-color: #8F576A;">
+         <children>
+            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="580.0" prefWidth="165.0" style="-fx-background-color: #262626; -fx-background-radius: 20;">
+               <children>
+                  <Label fx:id="points2" alignment="CENTER" layoutY="319.0" prefHeight="44.0" prefWidth="165.0" text="N/A" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutY="275.0" prefHeight="44.0" prefWidth="165.0" text="My Balance:" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel" alignment="CENTER" layoutX="2.0" layoutY="231.0" prefHeight="44.0" prefWidth="165.0" text="Username" textFill="#feaecb">
+                     <font>
+                        <Font name="Comic Sans MS" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <ScrollPane layoutX="268.0" layoutY="34.0" prefHeight="539.0" prefWidth="937.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1274.0" prefWidth="894.0">
+                     <children>
+                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="352.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Asos.PNG" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="647.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Look%20Fantastic.PNG" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="58.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/FootLocker.PNG" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="58.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Dominos.PNG" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="352.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/M&amp;S.PNG" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="647.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Urban%20Decay.PNG" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="58.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£10 voucher for 750 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
+                        <Button fx:id="FootLocker" layoutX="63.0" layoutY="18.0" mnemonicParsing="false" onAction="#setFootLockerpoints" opacity="0.0" prefHeight="299.0" prefWidth="203.0" text="FL" />
+                        <Button fx:id="AsosButton" layoutX="354.0" layoutY="12.0" mnemonicParsing="false" onAction="#setAsospoints" opacity="0.0" prefHeight="305.0" prefWidth="207.0" text="Asos" />
+                        <Text layoutX="350.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25% off code for 1000 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
+                        <Text layoutX="650.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3 for 2 voucher for 500 points" textAlignment="CENTER" wrappingWidth="209.05233563292086" />
+                        <Button fx:id="LookFantasicButton" layoutX="649.0" layoutY="8.0" mnemonicParsing="false" onAction="#setLOOKFANTASTICpoints" opacity="0.0" prefHeight="310.0" prefWidth="215.0" text="Button" />
+                        <Text layoutX="58.0" layoutY="715.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Large Pizza for 800 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
+                        <Text layoutX="352.0" layoutY="715.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meal Deal for 150 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
+                        <Text layoutX="647.0" layoutY="715.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£5 voucher for 300 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
+                        <Button fx:id="PizzaButton" layoutX="58.0" layoutY="411.0" mnemonicParsing="false" onAction="#setpizzapoints" opacity="0.0" prefHeight="299.0" prefWidth="215.0" text="Pizza" />
+                        <Button fx:id="MSbutton" layoutX="354.0" layoutY="411.0" mnemonicParsing="false" onAction="#setMandSPoints" opacity="0.0" prefHeight="299.0" prefWidth="207.0" text="Button" />
+                        <Button fx:id="UrbanDecay" layoutX="650.0" layoutY="412.0" mnemonicParsing="false" onAction="#setUrbanDecaypoints" opacity="0.0" prefHeight="299.0" prefWidth="205.0" text="Makeup" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
       <AnchorPane prefHeight="100.0" prefWidth="1280.0" style="-fx-background-color: #1C1316;">
          <children>
             <Button fx:id="homeButton" layoutX="167.0" layoutY="10.0" mnemonicParsing="false" onAction="#homeButtonAction" prefHeight="80.0" prefWidth="101.0" style="-fx-background-color: #262626; -fx-background-radius: 30;" text="Home" textFill="#ffaecb">
@@ -410,69 +483,6 @@
                      </font>
                   </Label>
                </children></AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="rewardsPage" layoutY="100.0" prefHeight="620.0" prefWidth="1280.0" style="-fx-background-color: #8F576A;">
-         <children>
-            <AnchorPane layoutX="20.0" layoutY="20.0" prefHeight="580.0" prefWidth="165.0" style="-fx-background-color: #262626; -fx-background-radius: 20;">
-               <children>
-                  <Label fx:id="points2" alignment="CENTER" layoutY="319.0" prefHeight="44.0" prefWidth="165.0" text="N/A" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutY="275.0" prefHeight="44.0" prefWidth="165.0" text="My Balance:" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="usernameLabel" alignment="CENTER" layoutX="2.0" layoutY="231.0" prefHeight="44.0" prefWidth="165.0" text="Username" textFill="#feaecb">
-                     <font>
-                        <Font name="Comic Sans MS" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <ScrollPane layoutX="268.0" layoutY="34.0" prefHeight="539.0" prefWidth="937.0">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1274.0" prefWidth="894.0">
-                     <children>
-                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="352.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Asos.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="647.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Look%20Fantastic.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="58.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/FootLocker.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="58.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Dominos.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="352.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/M&amp;S.PNG" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="647.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/Urban%20Decay.PNG" />
-                           </image>
-                        </ImageView>
-                        <Text layoutX="58.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£10 voucher for 750 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
-                        <Button fx:id="FootLocker" layoutX="63.0" layoutY="18.0" mnemonicParsing="false" onAction="#setFootLockerpoints" opacity="0.0" prefHeight="299.0" prefWidth="203.0" text="FL" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </ScrollPane>
          </children>
       </AnchorPane>
    </children>
