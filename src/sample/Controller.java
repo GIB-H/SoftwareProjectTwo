@@ -12,6 +12,10 @@ import javafx.scene.paint.Color;
 import user.Account;
 import user.Vouchers;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 
@@ -184,37 +188,53 @@ public class Controller {
                 setpoints(balance);
             }
         }
+        ArrayList<String> voucherDetails = new ArrayList();
+        voucherDetails.add(user.getAccountUsername());
+        voucherDetails.add(voucher.getName());
+        voucherDetails.add(String.valueOf(voucher.getCost()));
+        String voucherDetailsString = String.join(",", voucherDetails);
+
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter("userVouchers.csv", true));
+            writer.write(voucherDetailsString);
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
     void setUrbanDecaypoints(ActionEvent event){
-        Vouchers voucher = new Vouchers(300);
+        Vouchers voucher = new Vouchers(300, "Urban Decay");
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
 
     @FXML
     void setFootLockerpoints(ActionEvent event){
-        Vouchers voucher = new Vouchers(750);
+        Vouchers voucher = new Vouchers(750, "Foot Locker");
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     @FXML
     void setpizzapoints(ActionEvent event){
-        Vouchers voucher = new Vouchers(800);
+        Vouchers voucher = new Vouchers(800, "Pizza");
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     @FXML
     void setMandSPoints(ActionEvent event){
-        Vouchers voucher = new Vouchers(150);
+        Vouchers voucher = new Vouchers(150, "Marks & Spencer");
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     @FXML
     void setAsospoints(ActionEvent event){
-        Vouchers voucher = new Vouchers(1000);
+        Vouchers voucher = new Vouchers(1000, "ASOS");
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     @FXML
     void setLOOKFANTASTICpoints(ActionEvent event){
-        Vouchers voucher = new Vouchers(500);
+        Vouchers voucher = new Vouchers(500, "LOOK FANTASTIC");
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
     void setpoints(String accountBalance){
