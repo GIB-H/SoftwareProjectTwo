@@ -1,4 +1,4 @@
-package Encryption;
+package encryption;
 
 public class Encrypt {
 
