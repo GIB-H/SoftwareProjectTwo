@@ -425,6 +425,7 @@ public class Controller {
     @FXML
     void rewardsButtonAction(ActionEvent event) {
         rewardsPage.toFront();
+        homePage.toBack();
         rewardsButton.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
         homeButton.setStyle("-fx-background-color: #1C1316;");
         accountButton.setStyle("-fx-background-color: #1C1316;");
