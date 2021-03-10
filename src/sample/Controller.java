@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 import user.Account;
 import user.Vouchers;
 
+
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -191,6 +193,35 @@ public class Controller {
     private Label c7;
     @FXML
     private Label c8;
+    @FXML
+    private Button BlueFilterButton;
+    @FXML
+    private Label LittleEffort;
+    @FXML
+    private AnchorPane BigAnchor;
+    @FXML
+    private AnchorPane BottomPane;
+    @FXML
+    private AnchorPane RightPane;
+    @FXML
+    private AnchorPane InsidePane;
+    @FXML
+    void BlueCoulorBlindnessFilter(ActionEvent event){
+        homePage.setStyle("-fx-background-color: #142142;");
+        accountPage.setStyle("-fx-background-color: #142142;");
+        rewardsPage.setStyle("-fx-background-color: #142142;");
+        updatePassword.setStyle("-fx-text-fill: #da3fd2;" + "-fx-background-radius: 30;" + "-fx-background-color: #1C1316;");
+        DeleteAccount.setStyle("-fx-text-fill: #da3fd2;" + "-fx-background-radius: 30;" + "-fx-background-color: #1C1316;");
+        subTitle.setStyle("-fx-text-fill: #da3fd2;");
+        LittleEffort.setStyle("-fx-text-fill: #da3fd2;");
+        BigAnchor.setStyle("-fx-background-color: #1C1316;" + "-fx-background-radius: 30;");
+        BottomPane.setStyle("-fx-background-color: #1C1316;" + "-fx-background-radius: 30;");
+        RightPane.setStyle("-fx-background-color: #1C1316;" + "-fx-background-radius: 30;");
+        InsidePane.setStyle("-fx-background-color: #A3E4D7;" + "-fx-background-radius: 30;");
+        showOffers.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
+        randomPurchaseButton.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
+
+    }
 
 
     @FXML

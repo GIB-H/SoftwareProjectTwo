@@ -1,6 +1,6 @@
 package user;
 
-public class Vouchers {
+public class Vouchers{
 
     int cost;
     String name;
