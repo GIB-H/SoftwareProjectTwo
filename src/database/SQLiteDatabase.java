@@ -110,9 +110,10 @@ public class SQLiteDatabase {
         int accountBalance = 0;
         try {
             // search for balance in user record
-            String SQL = "SELECT Balance FROM LoginInfo WHERE Username = " + "'" + accountUsername + "'";
+            String SQL = "SELECT Balance FROM LoginInfo WHERE Username = ?";
             //
             PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, accountUsername);
             ResultSet result = pstmt.executeQuery();
             accountBalance = result.getInt("Balance");
             conn.close();
@@ -129,9 +130,10 @@ public class SQLiteDatabase {
         String firstName = "";
         try {
             // search for firstname in user record
-            String SQL = "SELECT FirstName FROM LoginInfo WHERE Username = " + "'" + accountUsername + "'";
+            String SQL = "SELECT FirstName FROM LoginInfo WHERE Username = ?";
             //
             PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, accountUsername);
             ResultSet result = pstmt.executeQuery();
             firstName = result.getString("FirstName");
             conn.close();
@@ -148,9 +150,10 @@ public class SQLiteDatabase {
         String secondName = "";
         try {
             // search for firstname in user record
-            String SQL = "SELECT LastName FROM LoginInfo WHERE Username = " + "'" + accountUsername + "'";
+            String SQL = "SELECT LastName FROM LoginInfo WHERE Username = ?";
             //
             PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, accountUsername);
             ResultSet result = pstmt.executeQuery();
             secondName = result.getString("LastName");
             conn.close();
@@ -167,9 +170,10 @@ public class SQLiteDatabase {
         String emailAddress = "";
         try {
             // search for firstname in user record
-            String SQL = "SELECT EmailAddress FROM LoginInfo WHERE Username = " + "'" + accountUsername + "'";
+            String SQL = "SELECT EmailAddress FROM LoginInfo WHERE Username = ?";
             //
             PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, accountUsername);
             ResultSet result = pstmt.executeQuery();
             emailAddress = result.getString("EmailAddress");
             conn.close();
@@ -186,9 +190,10 @@ public class SQLiteDatabase {
         int privilegeLevel = 0;
         try {
             // search for balance in user record
-            String SQL = "SELECT PrivilegeLevel FROM LoginInfo WHERE Username = " + "'" + accountUsername + "'";
+            String SQL = "SELECT PrivilegeLevel FROM LoginInfo WHERE Username = ?";
             //
             PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, accountUsername);
             ResultSet result = pstmt.executeQuery();
             privilegeLevel = result.getInt("PrivilegeLevel");
             conn.close();
@@ -205,9 +210,10 @@ public class SQLiteDatabase {
         String password = "";
         try {
             // search for firstname in user record
-            String SQL = "SELECT Password FROM LoginInfo WHERE Username = " + "'" + accountUsername + "'";
+            String SQL = "SELECT Password FROM LoginInfo WHERE Username = ?";
             //
             PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, accountUsername);
             ResultSet result = pstmt.executeQuery();
             password = result.getString("Password");
             conn.close();
@@ -218,13 +224,14 @@ public class SQLiteDatabase {
     }
 
 
-    public static void UpdatePassword(String username, String newpassword){
-        String SQL = "UPDATE LoginInfo SET Password = ? WHERE Username = '" + username + "'";
+    public static void UpdatePassword(String accountUsername, String newPassword){
+        String SQL = "UPDATE LoginInfo SET Password = ? WHERE Username = ?";
 
         try(Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             // set parameters
-            pstmt.setString(1, newpassword);
+            pstmt.setString(1, accountUsername);
+            pstmt.setString(2, newPassword);
             // save changes
             pstmt.executeUpdate();
             conn.close();
@@ -234,13 +241,14 @@ public class SQLiteDatabase {
         }
     }
 
-    public static void updateBalance(String username, String balance){
-        String SQL = "UPDATE LoginInfo SET Balance = ? WHERE Username = '" + username + "'";
+    public static void updateBalance(String accountUsername, String balance){
+        String SQL = "UPDATE LoginInfo SET Balance = ? WHERE Username = ?";
 
         try(Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             // set parameters
-            pstmt.setString(1, balance);
+            pstmt.setString(1, accountUsername);
+            pstmt.setString(2, balance);
             // save changes
             pstmt.executeUpdate();
             conn.close();
@@ -250,13 +258,14 @@ public class SQLiteDatabase {
         }
     }
 
-    public static void updatePremium(String username, String privilege){
-        String SQL = "UPDATE LoginInfo SET PrivilegeLevel = ? WHERE Username = '" + username + "'";
+    public static void updatePremium(String accountUsername, String privLvl){
+        String SQL = "UPDATE LoginInfo SET PrivilegeLevel = ? WHERE Username = ?";
 
         try(Connection conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             // set parameters
-            pstmt.setString(1, privilege);
+            pstmt.setString(1, accountUsername);
+            pstmt.setString(2, privLvl);
             // save changes
             pstmt.executeUpdate();
             conn.close();
