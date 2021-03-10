@@ -206,20 +206,92 @@ public class Controller {
     @FXML
     private AnchorPane InsidePane;
     @FXML
+    private Label myBalance;
+    @FXML
+    private Label voucherHeader;
+    @FXML
+    private Label pointCostHeader;
+    @FXML
+    private Label firstNameHeader;
+    @FXML
+    private Label secondNameHeader;
+    @FXML
+    private Label emailAddressHeader;
+    @FXML
+    private Label userNameHeader;
+    @FXML
+    private Label accountTypeHeader;
+    @FXML
+    private Label purchaseHistoryHeader;
+    @FXML
+    private Label accountDetailsHeader;
+    @FXML
+    private Label myBalance2;
+
+    @FXML
     void BlueCoulorBlindnessFilter(ActionEvent event){
+        //homepage
         homePage.setStyle("-fx-background-color: #142142;");
-        accountPage.setStyle("-fx-background-color: #142142;");
-        rewardsPage.setStyle("-fx-background-color: #142142;");
-        updatePassword.setStyle("-fx-text-fill: #da3fd2;" + "-fx-background-radius: 30;" + "-fx-background-color: #1C1316;");
-        DeleteAccount.setStyle("-fx-text-fill: #da3fd2;" + "-fx-background-radius: 30;" + "-fx-background-color: #1C1316;");
-        subTitle.setStyle("-fx-text-fill: #da3fd2;");
-        LittleEffort.setStyle("-fx-text-fill: #da3fd2;");
-        BigAnchor.setStyle("-fx-background-color: #1C1316;" + "-fx-background-radius: 30;");
-        BottomPane.setStyle("-fx-background-color: #1C1316;" + "-fx-background-radius: 30;");
-        RightPane.setStyle("-fx-background-color: #1C1316;" + "-fx-background-radius: 30;");
+        BigAnchor.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+        BottomPane.setStyle("-fx-background-color: #262626;" + "-fx-background-radius: 30;");
+        RightPane.setStyle("-fx-background-color:  #262626;" + "-fx-background-radius: 30;");
         InsidePane.setStyle("-fx-background-color: #A3E4D7;" + "-fx-background-radius: 30;");
         showOffers.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
         randomPurchaseButton.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
+        loginOffers.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
+        BlueFilterButton.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
+        loginTextPrompt.setStyle("-fx-text-fill: #da3fd2;");
+        subTitle.setStyle("-fx-text-fill: #da3fd2;");
+        LittleEffort.setStyle("-fx-text-fill: #da3fd2;");
+
+        //accountpage
+        accountPage.setStyle("-fx-background-color: #142142;");
+        updatePassword.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
+        DeleteAccount.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
+        Premium_Member.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
+        logout.setStyle("-fx-text-fill: #154360;" + "-fx-background-radius: 30;" + "-fx-background-color: #da3fd2;");
+        myBalance.setStyle("-fx-text-fill: #A3E4D7;");
+        voucherHeader.setStyle("-fx-text-fill: #A3E4D7;");
+        pointCostHeader.setStyle("-fx-text-fill: #A3E4D7;");
+        firstNameHeader.setStyle("-fx-text-fill: #A3E4D7;");
+        secondNameHeader.setStyle("-fx-text-fill: #A3E4D7;");
+        emailAddressHeader.setStyle("-fx-text-fill: #A3E4D7;");
+        userNameHeader.setStyle("-fx-text-fill: #A3E4D7;");
+        accountTypeHeader.setStyle("-fx-text-fill: #A3E4D7;");
+        usernameLabel2.setStyle("-fx-text-fill: #da3fd2;");
+        points3.setStyle("-fx-text-fill: #da3fd2;");
+        purchaseHistoryHeader.setStyle("-fx-text-fill: #da3fd2;");
+        accountDetailsHeader.setStyle("-fx-text-fill: #da3fd2;");
+        FNlabel.setStyle("-fx-text-fill: #da3fd2;");
+        SNLabel.setStyle("-fx-text-fill: #da3fd2;");
+        EMLabel.setStyle("-fx-text-fill: #da3fd2;");
+        UNLabel.setStyle("-fx-text-fill: #da3fd2;");
+        AccountTypeLabel.setStyle("-fx-text-fill: #da3fd2;");
+
+        Label[] vlabels = {v1, v2, v3, v4, v5, v6, v7, v8};
+        Label[] clabels = {c1, c2, c3, c4, c5, c6, c7, c8};
+
+        for(int i = 0; i < vlabels.length; i++){
+            try{
+                vlabels[i].setStyle("-fx-text-fill: #da3fd2;");
+                clabels[i].setStyle("-fx-text-fill: #da3fd2;");
+            } catch (ArrayIndexOutOfBoundsException e) {
+            }
+        }
+
+
+        //rewardspage
+        rewardsPage.setStyle("-fx-text-fill: #da3fd2;");
+        points2.setStyle("-fx-text-fill: #da3fd2;");
+        usernameLabel.setStyle("-fx-text-fill: #da3fd2;");
+        myBalance2.setStyle("-fx-text-fill: #A3E4D7;");
+
+
+
+
+
+
+
 
     }
 
@@ -448,6 +520,7 @@ public class Controller {
             }
             if(!found){
                 System.out.println("No Vouchers Found");
+
             }
             x.close();
         }
