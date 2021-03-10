@@ -14,10 +14,13 @@ import user.Vouchers;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
-
 public class Controller {
+
+    private static Scanner x;
 
     @FXML
     private Label points;
@@ -156,6 +159,41 @@ public class Controller {
     private Button UrbanDecay;
 
     @FXML
+    private Label v1;
+    @FXML
+    private Label v2;
+    @FXML
+    private Label v3;
+    @FXML
+    private Label v4;
+    @FXML
+    private Label v5;
+    @FXML
+    private Label v6;
+    @FXML
+    private Label v7;
+    @FXML
+    private Label v8;
+
+    @FXML
+    private Label c1;
+    @FXML
+    private Label c2;
+    @FXML
+    private Label c3;
+    @FXML
+    private Label c4;
+    @FXML
+    private Label c5;
+    @FXML
+    private Label c6;
+    @FXML
+    private Label c7;
+    @FXML
+    private Label c8;
+
+
+    @FXML
     void SimulatePurchase (ActionEvent event){
         //NEEDS TO SIMUATE THE USER PUTTING A CREDIT CARD/DEBIT CARD IN(MAYBE A NEW TABLE WITH SOME "VALID" CARDS
         //AND SOME CARDS WITH NOT ENOUGH TO BUY THE NEW MEMBERSHIP
@@ -189,7 +227,12 @@ public class Controller {
         ArrayList<String> voucherDetails = new ArrayList();
         voucherDetails.add(user.getAccountUsername());
         voucherDetails.add(voucher.getName());
-        voucherDetails.add(String.valueOf(voucher.getCost()));
+        if(user.getPrivilegeLevel()==0){
+            voucherDetails.add(String.valueOf(voucher.getCost()));
+        }
+        if(user.getPrivilegeLevel()==1){
+            voucherDetails.add(String.valueOf(voucher.getCost()/2));
+        }
         String voucherDetailsString = String.join(",", voucherDetails);
 
         BufferedWriter writer;
@@ -312,7 +355,117 @@ public class Controller {
             Premium_Member.setText("Cancel Membership");
         }
 
+        String filePath = "userVouchers.csv";
+        String searchTerm = user.getAccountUsername();
 
+        String[] nameData;
+        String[] costData;
+
+        nameData = (fetchVoucherName(searchTerm, filePath));
+
+        for (int i = 0; i < nameData.length / 2; i++) {
+            Object temp = nameData[i];
+            nameData[i] = nameData[nameData.length - 1 - i];
+            nameData[nameData.length - 1 - i] = (String) temp;
+        }
+
+        costData = (fetchVoucherCost(searchTerm, filePath));
+
+        for (int i = 0; i < costData.length / 2; i++) {
+            Object temp = costData[i];
+            costData[i] = costData[costData.length - 1 - i];
+            costData[costData.length - 1 - i] = (String) temp;
+        }
+
+        Label[] vlabels = {v1, v2, v3, v4, v5, v6, v7, v8};
+        Label[] clabels = {c1, c2, c3, c4, c5, c6, c7, c8};
+
+        for(int i = 0; i < vlabels.length; i++){
+            try{
+                vlabels[i].setText(nameData[i]);
+                clabels[i].setText(costData[i]);
+            } catch (ArrayIndexOutOfBoundsException e) {
+            }
+        }
+
+    }
+
+    public static String[] fetchVoucherName(String searchTerm, String filePath){
+        ArrayList<String> records = new ArrayList<String>();
+
+        boolean found = false;
+        String name = ""; String voucherName = ""; String voucherCost;
+
+        try {
+            Scanner x;
+            x = new Scanner(new File(filePath));
+            x.useDelimiter("[,\n]");
+
+            while (x.hasNext()){
+                name = x.next();
+                if(name.equals(searchTerm)){
+                    voucherName = x.next();
+                    voucherCost = x.next();
+                    String record = voucherName;
+                    records.add(record);
+                    found = true;
+                }
+                else{
+                    x.next();
+                    x.next();
+                }
+            }
+            if(!found){
+                System.out.println("No Vouchers Found");
+            }
+            x.close();
+        }
+        catch (Exception e){
+            System.out.println("Error");
+        }
+
+        String[] recordsArray = new String[records.size()];
+        records.toArray(recordsArray);
+        return recordsArray;
+    }
+
+    public static String[] fetchVoucherCost(String searchTerm, String filePath){
+        ArrayList<String> records = new ArrayList<String>();
+
+        boolean found = false;
+        String name = ""; String voucherName = ""; String voucherCost;
+
+        try {
+            Scanner x;
+            x = new Scanner(new File(filePath));
+            x.useDelimiter("[,\n]");
+
+            while (x.hasNext()){
+                name = x.next();
+                if(name.equals(searchTerm)){
+                    voucherName = x.next();
+                    voucherCost = x.next();
+                    String record = voucherCost;
+                    records.add(record);
+                    found = true;
+                }
+                else{
+                    x.next();
+                    x.next();
+                }
+            }
+            if(!found){
+                System.out.println("No Vouchers Found");
+            }
+            x.close();
+        }
+        catch (Exception e){
+            System.out.println("Error");
+        }
+
+        String[] recordsArray = new String[records.size()];
+        records.toArray(recordsArray);
+        return recordsArray;
     }
 
     @FXML
@@ -554,6 +707,24 @@ public class Controller {
         ChangePasswordField.clear();
         deleteUsername.clear();
         deletePassword.clear();
+
+        v1.setText("NA");
+        v2.setText("NA");
+        v3.setText("NA");
+        v4.setText("NA");
+        v5.setText("NA");
+        v6.setText("NA");
+        v7.setText("NA");
+        v8.setText("NA");
+
+        c1.setText("NA");
+        c2.setText("NA");
+        c3.setText("NA");
+        c4.setText("NA");
+        c5.setText("NA");
+        c6.setText("NA");
+        c7.setText("NA");
+        c8.setText("NA");
     }
 
     public void openPassWindow(){
