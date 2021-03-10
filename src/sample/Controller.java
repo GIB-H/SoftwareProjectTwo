@@ -16,7 +16,6 @@ import user.Vouchers;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -709,7 +708,7 @@ public class Controller {
     }
 
     public void validateSignUp(String firstName, String secondName, String emailAddress, String accountPassword, String accountUsername){
-        boolean checkUsername = SQLiteDatabase.CheckUserName(accountUsername);
+        boolean checkUsername = SQLiteDatabase.checkUsername(accountUsername);
         if (checkUsername) {
             if (accountPassword.length() < 8) {
                 loginLabel1.setText("password is too short");

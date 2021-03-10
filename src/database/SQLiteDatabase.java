@@ -2,6 +2,7 @@ package database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import encryption.Encrypt;
 
 public class SQLiteDatabase {
     public static Connection connect() {
@@ -38,16 +39,16 @@ public class SQLiteDatabase {
                 return false;
             }
         }
-        catch(Exception e){
+        catch(SQLException e){
             System.out.println("Not Logged in");
             return false;
         }
 
 
     }
-    public static boolean CheckUserName(String accountUsername){
+    public static boolean checkUsername(String accountUsername){
         Connection conn = connect();
-        String SQL = "SELECT * FROM LoginInfo WHERE Username = ?OR (Username IS NULL)";
+        String SQL = "SELECT * FROM LoginInfo WHERE Username = ? OR (Username IS NULL)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, accountUsername);
@@ -60,13 +61,13 @@ public class SQLiteDatabase {
 
 
             } else {
-                System.out.println("Username isnt used");
+                System.out.println("Username isn't used");
                 conn.close();
                 return true;
             }
         }
-        catch(Exception e){
-            System.out.println("accountUsername isnt used");
+        catch(SQLException e){
+            System.out.println(e.getMessage());
             return true;
         }
 
@@ -80,8 +81,12 @@ public class SQLiteDatabase {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             // we don't need to set the ID as it has been defined in the database to auto-increment and as not null
             // we use prepared statements instead of regular statements because the statement needs to accept parameters like the username
+            String plainTextString = accountUsername;
+            Encrypt encrypt = new Encrypt();
+            encrypt.encryptData(plainTextString);
+            accountUsername = String.valueOf(encrypt);
             pstmt.setString(1, accountUsername);
-            System.out.println("Your username is " + accountUsername + ".");
+
             pstmt.setString(2, accountPassword);
             System.out.println("You are a free member. Subscribe and become a premium user for lots of great discounts and offers!");
             pstmt.setString(3, emailAddress);
