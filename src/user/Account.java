@@ -46,7 +46,7 @@ public class Account {
         their balance. Used within the simPurchase method.
         */
 
-        int newBalance = accountBalance  + amount;
+        int newBalance = accountBalance + amount;
 
 
         // CODE TO UPDATE THE DATABASE WITH THE
@@ -61,9 +61,7 @@ public class Account {
         so that a users account and point balance can be made dynamic.
         */
 
-
-
-        int userBalance = SQLiteDatabase.accountBalance(accountUsername);  // PULLS USER BALANCE FROM DB
+        int accountBalance = SQLiteDatabase.accountBalance(accountUsername);  // PULLS USER BALANCE FROM DB
         accountBalance = updateBalance(purchaseValue /100); // Increases the user's balance by 1/100th of the irl purchase
     }
 
