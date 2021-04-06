@@ -223,18 +223,6 @@ public class Controller {
 
     }
 
-
-    @FXML
-    void SimulatePurchase (ActionEvent event){
-        //NEEDS TO SIMUATE THE USER PUTTING A CREDIT CARD/DEBIT CARD IN(MAYBE A NEW TABLE WITH SOME "VALID" CARDS
-        //AND SOME CARDS WITH NOT ENOUGH TO BUY THE NEW MEMBERSHIP
-
-        //new button to cancel membership(Are u sure?)
-        //design to show the user is a higher member
-        //deals require less points to purchase
-        //get 1.5 more points than user per transation
-    }
-
     public void purchaseVoucher(int cost, Vouchers voucher){
         Account user = loginInfo(null);
         if(user.getPrivilegeLevel() == 0){
