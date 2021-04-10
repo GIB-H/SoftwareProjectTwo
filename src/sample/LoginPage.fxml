@@ -147,7 +147,7 @@
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="confirmChange" alignment="CENTER" layoutX="86.0" layoutY="323.0" mnemonicParsing="false" onAction="#changepassword" prefHeight="48.0" prefWidth="332.0" style="-fx-background-color: #99C9F1; -fx-background-radius: 30;" text="Confirm Changes" textFill="WHITE">
+            <Button fx:id="confirmChange" alignment="CENTER" layoutX="86.0" layoutY="323.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="48.0" prefWidth="332.0" style="-fx-background-color: #99C9F1; -fx-background-radius: 30;" text="Confirm Changes" textFill="WHITE">
                <font>
                   <Font name="Comic Sans MS" size="12.0" />
                </font>
@@ -430,7 +430,7 @@
                               </ImageView>
                               <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="647.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/Look%20Fantastic.PNG" />
+                                    <Image url="@../images/Look Fantastic.PNG" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="58.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
@@ -445,12 +445,12 @@
                               </ImageView>
                               <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="352.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/M&amp;S.PNG" />
+                                    <Image url="@../images/MandS.PNG" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="307.0" fitWidth="305.0" layoutX="647.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/Urban%20Decay.PNG" />
+                                    <Image url="@../images/Urban Decay.PNG" />
                                  </image>
                               </ImageView>
                               <Text layoutX="58.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£10 voucher for 750 points" textAlignment="CENTER" wrappingWidth="215.2226847540146" />
@@ -486,7 +486,7 @@
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="196.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/download%20(1).png" />
+                              <Image url="@../images/download (1).png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="150.0" fitWidth="196.0" layoutX="193.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
@@ -531,7 +531,7 @@
                <children>
                   <ImageView fitHeight="131.0" fitWidth="122.0" layoutX="77.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/Apple%20Pay.jpg" />
+                        <Image url="@../images/Apple Pay.jpg" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="130.0" fitWidth="116.0" layoutX="80.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
@@ -541,7 +541,7 @@
                   </ImageView>
                   <ImageView fitHeight="108.0" fitWidth="122.0" layoutX="77.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/Master%20Card.png" />
+                        <Image url="@../images/Master Card.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="131.0" fitWidth="122.0" layoutX="77.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">

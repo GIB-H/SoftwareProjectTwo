@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import encryption.Encrypt;
 
 public class SQLiteDatabase {
+
+    // establish database connection
     public static Connection connect() {
         Connection conn = null;
         try {
@@ -20,13 +22,15 @@ public class SQLiteDatabase {
         return conn;
     }
 
+    // check if account information exists
     public static boolean verifyLogin(String accountUsername, String accountPassword) {
         Connection conn = connect();
+        Encrypt encrypt = new Encrypt();
         String SQL = "SELECT * FROM LoginInfo WHERE Username = ? AND Password = ? OR (Username IS NULL AND Password IS NULL)";
         try {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, accountUsername);
-            pstmt.setString(2, accountPassword);
+            pstmt.setString(2, encrypt.encryptData(accountPassword));
             ResultSet result = pstmt.executeQuery();
 
             if(result.next()){
@@ -46,6 +50,8 @@ public class SQLiteDatabase {
 
 
     }
+
+    // check if username is available
     public static boolean checkUsername(String accountUsername){
         Connection conn = connect();
         String SQL = "SELECT * FROM LoginInfo WHERE Username = ? OR (Username IS NULL)";
@@ -81,18 +87,19 @@ public class SQLiteDatabase {
             PreparedStatement pstmt = conn.prepareStatement(SQL);
             // we don't need to set the ID as it has been defined in the database to auto-increment and as not null
             // we use prepared statements instead of regular statements because the statement needs to accept parameters like the username
-            String plainTextString = accountUsername;
             Encrypt encrypt = new Encrypt();
-            encrypt.encryptData(plainTextString);
-            accountUsername = String.valueOf(encrypt);
+            String encryptedPassword = encrypt.encryptData(accountPassword);
+            String encryptedFirstName = encrypt.encryptData(firstName);
+            String encryptedLastName = encrypt.encryptData(lastName);
             pstmt.setString(1, accountUsername);
-
-            pstmt.setString(2, accountPassword);
+            pstmt.setString(2, encryptedPassword);
+            System.out.println(encryptedPassword);
+            System.out.println(encrypt.decryptData(encryptedPassword));
             System.out.println("You are a free member. Subscribe and become a premium user for lots of great discounts and offers!");
             pstmt.setString(3, emailAddress);
-            pstmt.setString(4, firstName);
-            pstmt.setString(5, lastName);
-            System.out.println("Your name is " + firstName + " " + lastName);
+            pstmt.setString(4, encryptedFirstName);
+            pstmt.setString(5, encryptedLastName);
+            System.out.println("Your name is " + encrypt.decryptData(encryptedFirstName) + " " + encrypt.decryptData(encryptedLastName));
             pstmt.executeUpdate();
             conn.close();
         } catch (SQLException e) {
@@ -131,6 +138,7 @@ public class SQLiteDatabase {
     public static String accountFirstName(String accountUsername) {
         // establish database connection
         Connection conn = connect();
+        Encrypt encrypt = new Encrypt();
         // initialise first name variable
         String firstName = "";
         try {
@@ -141,6 +149,7 @@ public class SQLiteDatabase {
             pstmt.setString(1, accountUsername);
             ResultSet result = pstmt.executeQuery();
             firstName = result.getString("FirstName");
+            String decryptedFirstName = encrypt.decryptData(firstName);
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -151,6 +160,7 @@ public class SQLiteDatabase {
     public static String accountSecondName(String accountUsername) {
         // establish database connection
         Connection conn = connect();
+        Encrypt encrypt = new Encrypt();
         // initialise second name variable
         String secondName = "";
         try {
@@ -161,6 +171,7 @@ public class SQLiteDatabase {
             pstmt.setString(1, accountUsername);
             ResultSet result = pstmt.executeQuery();
             secondName = result.getString("LastName");
+            String decryptedSecondName = encrypt.decryptData(secondName);
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -211,6 +222,7 @@ public class SQLiteDatabase {
     public static String accountPassword(String accountUsername) {
         // establish database connection
         Connection conn = connect();
+        Encrypt encrypt = new Encrypt();
         // initialise email address variable
         String password = "";
         try {
@@ -221,6 +233,7 @@ public class SQLiteDatabase {
             pstmt.setString(1, accountUsername);
             ResultSet result = pstmt.executeQuery();
             password = result.getString("Password");
+            String decryptedPassword = encrypt.decryptData(password);
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -230,6 +243,8 @@ public class SQLiteDatabase {
 
 
     public static void UpdatePassword(String accountUsername, String newPassword){
+        Encrypt encrypt = new Encrypt();
+        String encrypedNewPassword = encrypt.encryptData(newPassword);
         String SQL = "UPDATE LoginInfo SET Password = ? WHERE Username = ?";
 
         try(Connection conn = connect();

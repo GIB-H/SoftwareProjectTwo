@@ -1,6 +1,7 @@
 package user;
 
 import database.SQLiteDatabase;
+import encryption.Encrypt;
 import sample.Controller;
 
 public class Account {
@@ -29,9 +30,11 @@ public class Account {
     // user.Account Class Constructor
     public Account(String accountUsername, String firstName, String secondName, String emailAddress, int accountBalance, int privilegeLevel, String password){
         // Sets string attributes
+        Encrypt encrypt = new Encrypt();
+
         this.accountUsername = accountUsername;
-        this.firstName = firstName;
-        this.secondName = secondName;
+        this.firstName = encrypt.decryptData(firstName);
+        this.secondName = encrypt.decryptData(secondName);
         this.emailAddress = emailAddress;
         this.password = password;
         // Sets integer attributes
@@ -46,12 +49,11 @@ public class Account {
         their balance. Used within the simPurchase method.
         */
 
-        int newBalance = accountBalance + amount;
-
+        SQLiteDatabase.accountBalance(accountUsername);
 
         // CODE TO UPDATE THE DATABASE WITH THE
 
-        return newBalance;
+        return accountBalance + amount;
     }
 
     public void simPurchase(int purchaseValue){
@@ -61,7 +63,7 @@ public class Account {
         so that a users account and point balance can be made dynamic.
         */
 
-        int accountBalance = SQLiteDatabase.accountBalance(accountUsername);  // PULLS USER BALANCE FROM DB
+        int userBalance = 0;                     // PULLS USER BALANCE FROM DB (NEEDS CODING)
         accountBalance = updateBalance(purchaseValue /100); // Increases the user's balance by 1/100th of the irl purchase
     }
 

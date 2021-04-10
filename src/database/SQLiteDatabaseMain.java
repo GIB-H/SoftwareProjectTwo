@@ -33,9 +33,8 @@ public class SQLiteDatabaseMain {
 
     public static void deleteUser() {
         System.out.println("Enter your username to delete your account.");
-        SQLiteDatabase app = new SQLiteDatabase();
         Scanner input = new Scanner(System.in);
         String password = input.next();
-        app.deleteRecord(password);
+        SQLiteDatabase.deleteRecord(password);
     }
 }

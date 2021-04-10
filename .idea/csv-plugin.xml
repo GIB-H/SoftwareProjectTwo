@@ -73,10 +73,24 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\src\user\Vouchers.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\testing\SQLiteDatabaseTesting.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\userVouchers.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>

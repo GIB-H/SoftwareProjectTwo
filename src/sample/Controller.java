@@ -1,6 +1,9 @@
 package sample;
 
 import database.SQLiteDatabase;
+import encryption.Encrypt;
+import user.Account;
+import user.Vouchers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,11 +12,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import user.Account;
-import user.Vouchers;
-
-
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -294,6 +292,18 @@ public class Controller {
 
     }
 
+
+    @FXML
+    void SimulatePurchase (ActionEvent event){
+        //NEEDS TO SIMULATE THE USER PUTTING A CREDIT CARD/DEBIT CARD IN(MAYBE A NEW TABLE WITH SOME "VALID" CARDS
+        //AND SOME CARDS WITH NOT ENOUGH TO BUY THE NEW MEMBERSHIP
+
+        //new button to cancel membership(Are u sure?)
+        //design to show the user is a higher member
+        //deals require less points to purchase
+        //get 1.5 more points than user per transaction
+    }
+
     public void purchaseVoucher(int cost, Vouchers voucher){
         Account user = loginInfo(null);
         if(user.getPrivilegeLevel() == 0){
@@ -302,7 +312,7 @@ public class Controller {
                 String username = user.getAccountUsername();
                 String balance = String.valueOf(user.getAccountBalance());
                 SQLiteDatabase.updateBalance(username, balance);
-                setpoints(balance);
+                setPoints(balance);
             }
         }
         if(user.getPrivilegeLevel() == 1){
@@ -311,7 +321,7 @@ public class Controller {
                 String username = user.getAccountUsername();
                 String balance = String.valueOf(user.getAccountBalance());
                 SQLiteDatabase.updateBalance(username, balance);
-                setpoints(balance);
+                setPoints(balance);
             }
         }
         ArrayList<String> voucherDetails = new ArrayList();
@@ -368,30 +378,30 @@ public class Controller {
         Vouchers voucher = new Vouchers(500, "LOOK FANTASTIC");
         purchaseVoucher(-voucher.getCost()*100, voucher);
     }
-    void setpoints(String accountBalance){
+    void setPoints(String accountBalance){
         points.setText(String.valueOf(accountBalance));
         points2.setText(String.valueOf(accountBalance));
         points3.setText(String.valueOf(accountBalance));
     }
     @FXML
-    void changepassword(ActionEvent event){
+    void changePassword(ActionEvent event){
         Account user = loginInfo(null);
 
         String username = user.getAccountUsername();
-        String oldpassword = user.getPassword();
-        String oldpasswordconfirm = oldPassword.getText();
-        String newpassword = ChangePasswordField.getText();
-        System.out.println(oldpassword);
-        System.out.println(newpassword);
-        if(oldpassword.equals(oldpasswordconfirm)){
-            SQLiteDatabase.UpdatePassword(username, newpassword);
+        String oldPassword = user.getPassword();
+        String oldPasswordConfirm = this.oldPassword.getText();
+        String newPassword = ChangePasswordField.getText();
+        System.out.println(oldPassword);
+        System.out.println(newPassword);
+        if(oldPassword.equals(oldPasswordConfirm)){
+            SQLiteDatabase.UpdatePassword(username, newPassword);
             wrongPasswords.setText("Password successfully changed.");
             wrongPasswords.setTextFill(Color.rgb(0 , 255, 33));
         }else {
             wrongPasswords.setText("Please enter correct password.");
             wrongPasswords.setTextFill(Color.rgb(255 , 0, 0));
         }
-        oldPassword.clear();
+        this.oldPassword.clear();
         ChangePasswordField.clear();
 
     }
@@ -644,6 +654,7 @@ public class Controller {
     }
 
     public Account loginInfo(Account user) {
+        Encrypt encrypt = new Encrypt();
         String accountUsername = userNameField.getText();
         String accountFirstName = SQLiteDatabase.accountFirstName(accountUsername);
         String accountSecondName = SQLiteDatabase.accountSecondName(accountUsername);
@@ -663,7 +674,7 @@ public class Controller {
             int accountBalance = user.getAccountBalance();
             String accountFirstName = user.getFirstName();
             loginLabel.setText("");
-            System.out.println("Welcome "+ accountUsername);
+            System.out.println("Welcome " + accountUsername);
             signInPage.toBack();
             usernameButton.setText(String.valueOf(accountUsername));
             usernameHider.toFront();
